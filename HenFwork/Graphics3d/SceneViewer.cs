@@ -10,6 +10,7 @@ namespace HenFwork.Graphics3d
     public class SceneViewer : Drawable
     {
         private RenderTexture renderTexture;
+
         public Scene Scene { get; }
         public Camera Camera { get; }
 

@@ -2,8 +2,9 @@
 // Licensed under the Affectionate Dove Limited Code Viewing License.
 // See the LICENSE file in the repository root for full license text.
 
+using HenFwork.Testing;
+using HenFwork.Testing.Input;
 using HenFwork.VisualTests.Examples;
-using HenFwork.VisualTests.Input;
 
 namespace HenFwork.VisualTests.Graphics2d
 {

@@ -4,8 +4,9 @@
 
 using HenFwork.Graphics2d;
 using HenFwork.Graphics3d;
+using HenFwork.Testing;
+using HenFwork.Testing.Input;
 using HenFwork.UI;
-using HenFwork.VisualTests.Input;
 using System.Numerics;
 
 namespace HenFwork.VisualTests.Graphics3d

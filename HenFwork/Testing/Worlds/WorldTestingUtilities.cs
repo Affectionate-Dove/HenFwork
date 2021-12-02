@@ -9,7 +9,7 @@ using HenFwork.Worlds.Nodes;
 using System.Collections.Generic;
 using System.Numerics;
 
-namespace HenFwork.Tests.Worlds
+namespace HenFwork.Testing.Worlds
 {
     public static class WorldTestingUtilities
     {

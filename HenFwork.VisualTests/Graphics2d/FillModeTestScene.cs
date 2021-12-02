@@ -4,8 +4,9 @@
 
 using HenBstractions.Graphics;
 using HenFwork.Graphics2d;
+using HenFwork.Testing;
+using HenFwork.Testing.Input;
 using HenFwork.UI;
-using HenFwork.VisualTests.Input;
 using System.Collections.Generic;
 
 namespace HenFwork.VisualTests.Graphics2d

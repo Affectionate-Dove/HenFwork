@@ -7,6 +7,8 @@ using HenBstractions.Input;
 using HenFwork.Graphics2d;
 using HenFwork.Input.UI;
 using HenFwork.Screens;
+using HenFwork.Testing;
+using HenFwork.Testing.Input;
 using HenFwork.UI;
 using System.Numerics;
 

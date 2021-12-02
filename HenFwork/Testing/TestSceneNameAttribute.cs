@@ -4,7 +4,7 @@
 
 using System;
 
-namespace HenFwork.VisualTests
+namespace HenFwork.Testing
 {
     [AttributeUsage(AttributeTargets.Class, Inherited = false)]
     public sealed class TestSceneNameAttribute : Attribute

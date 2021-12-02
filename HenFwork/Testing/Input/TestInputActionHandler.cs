@@ -6,7 +6,7 @@ using HenBstractions.Input;
 using HenFwork.Input;
 using System.Collections.Generic;
 
-namespace HenFwork.VisualTests.Input
+namespace HenFwork.Testing.Input
 {
     public class TestInputActionHandler : InputActionHandler<TestAction>
     {

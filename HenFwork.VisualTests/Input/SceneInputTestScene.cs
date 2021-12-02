@@ -3,6 +3,8 @@
 // See the LICENSE file in the repository root for full license text.
 
 using HenFwork.Graphics2d;
+using HenFwork.Testing;
+using HenFwork.Testing.Input;
 using HenFwork.UI;
 using System.Collections.Generic;
 

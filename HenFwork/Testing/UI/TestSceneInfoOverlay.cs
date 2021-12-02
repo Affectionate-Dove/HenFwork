@@ -6,7 +6,7 @@ using HenBstractions.Graphics;
 using HenFwork.Graphics2d;
 using HenFwork.UI;
 
-namespace HenFwork.VisualTests.UI
+namespace HenFwork.Testing.UI
 {
     public class TestSceneInfoOverlay : Container
     {

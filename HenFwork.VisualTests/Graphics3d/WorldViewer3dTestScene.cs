@@ -7,7 +7,8 @@ using HenBstractions.Graphics;
 using HenBstractions.Numerics;
 using HenFwork.Graphics3d;
 using HenFwork.Graphics3d.Shapes;
-using HenFwork.VisualTests.Input;
+using HenFwork.Testing;
+using HenFwork.Testing.Input;
 using System;
 using System.Numerics;
 

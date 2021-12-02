@@ -3,10 +3,9 @@
 // See the LICENSE file in the repository root for full license text.
 
 using HenFwork.Input.UI;
-using HenFwork.Testing;
 using HenFwork.Testing.Input;
 
-namespace HenFwork.VisualTests
+namespace HenFwork.Testing
 {
     public class VisualTestsGame : Game
     {
@@ -15,8 +14,6 @@ namespace HenFwork.VisualTests
 
         public VisualTestsGame()
         {
-            LoadResources();
-
             var visualTesterScreen = new VisualTester(Inputs);
 
             inputActionHandler = new VisualTesterInputActionHandler(Inputs);
@@ -33,7 +30,5 @@ namespace HenFwork.VisualTests
             positionalInterfaceInputManager.Update();
             base.OnUpdate();
         }
-
-        private static void LoadResources() => ModelStore.Load("Resources/Models/building_dock.obj");
     }
 }

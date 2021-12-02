@@ -5,8 +5,9 @@
 using HenBstractions.Input;
 using HenFwork.Input.UI;
 using HenFwork.Screens;
+using HenFwork.Testing;
+using HenFwork.Testing.Input;
 using HenFwork.UI;
-using HenFwork.VisualTests.Input;
 
 namespace HenFwork.VisualTests.UI
 {

@@ -3,9 +3,10 @@
 // See the LICENSE file in the repository root for full license text.
 
 using HenFwork.Graphics2d.Worlds;
-using HenFwork.Tests.Worlds;
+using HenFwork.Testing;
+using HenFwork.Testing.Input;
+using HenFwork.Testing.Worlds;
 using HenFwork.UI;
-using HenFwork.VisualTests.Input;
 using HenFwork.Worlds;
 using System.Numerics;
 

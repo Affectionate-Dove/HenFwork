@@ -6,12 +6,15 @@ using System.Numerics;
 
 namespace HenBstractions.Graphics
 {
+    // TODO: Unloading RenderTexture2D
     public class RenderTexture : Texture
     {
-        ~RenderTexture() => Raylib_cs.Raylib.UnloadRenderTexture(RenderTexture2D);
+        internal Raylib_cs.RenderTexture2D RenderTexture2D { get; private set; }
 
-        internal Raylib_cs.RenderTexture2D RenderTexture2D { get; }
-
-        public RenderTexture(Vector2 size) => RenderTexture2D = Raylib_cs.Raylib.LoadRenderTexture((int)size.X, (int)size.Y);
+        public RenderTexture(Vector2 size)
+        {
+            RenderTexture2D = Raylib_cs.Raylib.LoadRenderTexture((int)size.X, (int)size.Y);
+            Texture2D = RenderTexture2D.texture;
+        }
     }
 }

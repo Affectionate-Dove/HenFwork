@@ -4,6 +4,7 @@
 
 using HenBstractions.Graphics;
 using HenFwork.Graphics2d;
+using HenFwork.Testing;
 using System.Numerics;
 
 namespace HenFwork.VisualTests.Graphics2d

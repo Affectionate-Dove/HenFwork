@@ -2,6 +2,7 @@
 // Licensed under the Affectionate Dove Limited Code Viewing License.
 // See the LICENSE file in the repository root for full license text.
 
+using HenFwork.Testing;
 using System.Numerics;
 
 namespace HenFwork.VisualTests.Examples

@@ -5,10 +5,10 @@
 using HenFwork.Graphics2d;
 using HenFwork.Input;
 using HenFwork.Screens;
-using HenFwork.VisualTests.Input;
+using HenFwork.Testing.Input;
 using System.Collections.Generic;
 
-namespace HenFwork.VisualTests
+namespace HenFwork.Testing
 {
     public abstract class VisualTestScene : Screen, IInputListener<SceneControls>
     {

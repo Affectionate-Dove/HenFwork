@@ -7,7 +7,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\HenFwork.MapEditing\HenFwork.MapEditing.csproj" />
-    <ProjectReference Include="..\HenFwork.VisualTests\HenFwork.VisualTests.csproj" />
   </ItemGroup>
 
 </Project>

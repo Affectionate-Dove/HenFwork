@@ -7,15 +7,15 @@ using HenBstractions.Input;
 using HenFwork.Graphics2d;
 using HenFwork.Input;
 using HenFwork.Screens;
+using HenFwork.Testing.Input;
+using HenFwork.Testing.UI;
 using HenFwork.UI;
-using HenFwork.VisualTests.Input;
-using HenFwork.VisualTests.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace HenFwork.VisualTests
+namespace HenFwork.Testing
 {
     public class VisualTester : Screen, IInputListener<VisualTesterControls>
     {

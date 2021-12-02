@@ -2,7 +2,7 @@
 // Licensed under the Affectionate Dove Limited Code Viewing License.
 // See the LICENSE file in the repository root for full license text.
 
-namespace HenFwork.VisualTests
+namespace HenFwork.Testing.Input
 {
     public enum VisualTesterControls
     {
