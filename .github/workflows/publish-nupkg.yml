@@ -22,13 +22,25 @@ jobs:
       run: echo "VERSION=${GITHUB_REF/refs\/tags\/}" >> $GITHUB_ENV
     - name: Build HenFwork
       run: dotnet build ./HenFwork/HenFwork.csproj --configuration Release /p:Version=${VERSION}
+    - name: Build HenBstractions
+      run: dotnet build ./HenBstractions/HenBstractions.csproj --configuration Release /p:Version=${VERSION}
     - name: Pack HenFwork
       run: dotnet pack ./HenFwork/HenFwork.csproj --configuration Release /p:Version=${VERSION} --no-build --output .
+    - name: Pack HenBstractions
+      run: dotnet pack ./HenBstractions/HenBstractions.csproj --configuration Release /p:Version=${VERSION} --no-build --output .
     - name: Push HenFwork nupkg to GitHub Packages
       run: dotnet nuget push HenFwork.${VERSION}.nupkg --source https://nuget.pkg.github.com/Affectionate-Dove/index.json --api-key ${GITHUB_TOKEN}
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Push HenBstractions nupkg to GitHub Packages
+      run: dotnet nuget push HenBstractions.${VERSION}.nupkg --source https://nuget.pkg.github.com/Affectionate-Dove/index.json --api-key ${GITHUB_TOKEN}
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     - name: Push HenFwork nupkg to nuget.org
       run: dotnet nuget push HenFwork.${VERSION}.nupkg --api-key ${NUGET_TOKEN} --source https://api.nuget.org/v3/index.json
+      env:
+        NUGET_TOKEN: ${{ secrets.HENFWORK_NUGET_TOKEN }}
+    - name: Push HenBstractions nupkg to nuget.org
+      run: dotnet nuget push HenBstractions.${VERSION}.nupkg --api-key ${NUGET_TOKEN} --source https://api.nuget.org/v3/index.json
       env:
         NUGET_TOKEN: ${{ secrets.HENFWORK_NUGET_TOKEN }}
