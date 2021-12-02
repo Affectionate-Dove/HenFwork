@@ -3,10 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31912.275
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HenHen.Core", "HenHen.Core\HenHen.Core.csproj", "{4391B31E-F52D-47C4-8A18-9DDF6C94C1B9}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HenHen.Visual", "HenHen.Visual\HenHen.Visual.csproj", "{4158CB43-F1A7-442A-85EC-1FE7575235B7}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HenFwork", "HenFwork\HenFwork.csproj", "{9854DCA4-786F-4B8B-940A-638F9A9A048A}"
 	ProjectSection(ProjectDependencies) = postProject
 		{5ADC0A42-E116-4E89-BE12-05FBFE47CDC5} = {5ADC0A42-E116-4E89-BE12-05FBFE47CDC5}
@@ -22,19 +18,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.globalconfig = .globalconfig
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HenHen.Core.Tests", "HenHen.Core.Tests\HenHen.Core.Tests.csproj", "{287DE07F-0A6E-428C-86BA-A287670E4A48}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HenHen.Core.VisualTests", "HenHen.Core.VisualTests\HenHen.Core.VisualTests.csproj", "{A1ED6354-38E5-47D2-B888-43B3ED8E0B64}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HenFwork.MapEditing", "HenFwork.MapEditing\HenFwork.MapEditing.csproj", "{886F5600-BD7A-48DF-9B6E-5C7763E829A9}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HenFwork.MapEditing.Tests", "HenFwork.MapEditing.Tests\HenFwork.MapEditing.Tests.csproj", "{6C3C5C89-9968-4C6F-B06F-6C296A7115D5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HenFwork.MapEditing.VisualTests", "HenFwork.MapEditing.VisualTests\HenFwork.MapEditing.VisualTests.csproj", "{423A8800-182F-4C9E-B7BB-1B46E2187FDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HenBstractions", "HenBstractions\HenBstractions.csproj", "{5ADC0A42-E116-4E89-BE12-05FBFE47CDC5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HenBstractions", "HenBstractions\HenBstractions.csproj", "{5ADC0A42-E116-4E89-BE12-05FBFE47CDC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HenBstractions.Tests", "HenBstractions.Tests\HenBstractions.Tests.csproj", "{DE85D018-07E4-4D58-B5CD-2E324B8A17E6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HenBstractions.Tests", "HenBstractions.Tests\HenBstractions.Tests.csproj", "{DE85D018-07E4-4D58-B5CD-2E324B8A17E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -42,14 +34,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4391B31E-F52D-47C4-8A18-9DDF6C94C1B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4391B31E-F52D-47C4-8A18-9DDF6C94C1B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4391B31E-F52D-47C4-8A18-9DDF6C94C1B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4391B31E-F52D-47C4-8A18-9DDF6C94C1B9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4158CB43-F1A7-442A-85EC-1FE7575235B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4158CB43-F1A7-442A-85EC-1FE7575235B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4158CB43-F1A7-442A-85EC-1FE7575235B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4158CB43-F1A7-442A-85EC-1FE7575235B7}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9854DCA4-786F-4B8B-940A-638F9A9A048A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9854DCA4-786F-4B8B-940A-638F9A9A048A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9854DCA4-786F-4B8B-940A-638F9A9A048A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -62,14 +46,6 @@ Global
 		{BA38218A-2C02-4C38-BBD2-09F5EA18042E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BA38218A-2C02-4C38-BBD2-09F5EA18042E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BA38218A-2C02-4C38-BBD2-09F5EA18042E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{287DE07F-0A6E-428C-86BA-A287670E4A48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{287DE07F-0A6E-428C-86BA-A287670E4A48}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{287DE07F-0A6E-428C-86BA-A287670E4A48}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{287DE07F-0A6E-428C-86BA-A287670E4A48}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A1ED6354-38E5-47D2-B888-43B3ED8E0B64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A1ED6354-38E5-47D2-B888-43B3ED8E0B64}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A1ED6354-38E5-47D2-B888-43B3ED8E0B64}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A1ED6354-38E5-47D2-B888-43B3ED8E0B64}.Release|Any CPU.Build.0 = Release|Any CPU
 		{886F5600-BD7A-48DF-9B6E-5C7763E829A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{886F5600-BD7A-48DF-9B6E-5C7763E829A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{886F5600-BD7A-48DF-9B6E-5C7763E829A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
