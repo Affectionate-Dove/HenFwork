@@ -30,7 +30,7 @@ jobs:
           tag=$(git describe --tags --abbrev=0)
           release_name="HenFwork-$tag-${{ matrix.target }}"
           # Build everything
-          dotnet publish HenFwork/HenFwork.csproj --framework net5.0 --runtime "${{ matrix.target }}" -c Release -o "$release_name" -p:PublishSingleFile=true --no-self-contained
+          dotnet publish HenFwork/HenFwork.csproj --framework net5.0 --runtime "${{ matrix.target }}" -c Release -o "$release_name" --no-self-contained
           # Pack files
           if [ "${{ matrix.target }}" == "win-x64" ]; then
             # Pack to zip for Windows
