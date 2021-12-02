@@ -2,8 +2,6 @@
 // Licensed under the Affectionate Dove Limited Code Viewing License.
 // See the LICENSE file in the repository root for full license text.
 
-using System;
-
 namespace HenBstractions.Graphics
 {
     public class Model
@@ -13,7 +11,5 @@ namespace HenBstractions.Graphics
         internal Raylib_cs.Model InternalModel { get; }
 
         public Model(string path) => InternalModel = Raylib_cs.Raylib.LoadModel(path);
-
-        public void Dispose() => throw new NotImplementedException();
     }
 }
