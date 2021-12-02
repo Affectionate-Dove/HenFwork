@@ -3,6 +3,9 @@
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
     <Nullable>enable</Nullable>
+	<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+	<RepositoryUrl>https://github.com/Affectionate-Dove/HenFwork</RepositoryUrl>
+	<RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
 	<ItemGroup>
