@@ -28,9 +28,9 @@ jobs:
         shell: bash
         run: |
           tag=$(git describe --tags --abbrev=0)
-          release_name="HenHen-$tag-${{ matrix.target }}"
+          release_name="HenFwork-$tag-${{ matrix.target }}"
           # Build everything
-          dotnet publish HenHen.Visual/HenHen.Visual.csproj --framework net5.0 --runtime "${{ matrix.target }}" -c Release -o "$release_name" -p:PublishSingleFile=true --no-self-contained
+          dotnet publish HenFwork/HenFwork.csproj --framework net5.0 --runtime "${{ matrix.target }}" -c Release -o "$release_name" -p:PublishSingleFile=true --no-self-contained
           # Pack files
           if [ "${{ matrix.target }}" == "win-x64" ]; then
             # Pack to zip for Windows
@@ -44,6 +44,6 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           prerelease: true
-          files: 'HenHen-*'
+          files: 'HenFwork-*'
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
