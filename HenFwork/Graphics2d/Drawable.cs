@@ -4,6 +4,7 @@
 
 using HenBstractions.Graphics;
 using HenBstractions.Numerics;
+using HenFwork.Graphics2d.Layouts;
 using System;
 using System.Numerics;
 
