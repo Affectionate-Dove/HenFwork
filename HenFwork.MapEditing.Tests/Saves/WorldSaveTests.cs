@@ -3,13 +3,12 @@
 // See the LICENSE file in the repository root for full license text.
 
 using HenFwork.MapEditing.Saves;
-using HenFwork.MapEditing.Tests.Saves;
 using HenFwork.Worlds.Mediums;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 
-namespace HenHen.Framework.MapEditing.Tests.Saves
+namespace HenFwork.MapEditing.Tests.Saves
 {
     [TestOf(typeof(WorldSave))]
     public class WorldSaveTests

@@ -5,7 +5,7 @@
 using HenBstractions.Numerics;
 using NUnit.Framework;
 
-namespace HenFwork.Tests.Numerics
+namespace HenBstractions.Tests.Numerics
 {
     public class SphereTests
     {

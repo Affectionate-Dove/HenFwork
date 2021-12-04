@@ -5,7 +5,7 @@
 using HenFwork.Worlds.Chunks.Simulation;
 using NUnit.Framework;
 
-namespace HenFwork.Tests.Worlds.Chunks
+namespace HenFwork.Tests.Worlds.Chunks.Simulation
 {
     public class ChunksSimulationRingTests
     {
