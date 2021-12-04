@@ -7,7 +7,7 @@ using HenFwork.Graphics2d;
 using HenFwork.UI;
 using System.Numerics;
 
-namespace HenFwork.VisualTests.Examples
+namespace HenFwork.Testing
 {
     public class ExampleDrawable : Container, IHasColor
     {
