@@ -21,9 +21,8 @@ namespace HenFwork.Tests.UI
             new(1, 10, new (float, float)[]{ (0, 1), (1,0), (4,-3), (15, -9) }),
         };
 
-        [Test, Combinatorial]
-        public void ScrollTest(
-            [ValueSource(nameof(Cases))] Case c)
+        [TestCaseSource(nameof(Cases))]
+        public void ScrollTest(Case c)
         {
             var scrollableContainer = new ScrollableContainer<TestAction>
             {
