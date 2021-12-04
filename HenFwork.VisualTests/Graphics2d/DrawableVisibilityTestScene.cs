@@ -4,7 +4,6 @@
 
 using HenFwork.Testing;
 using HenFwork.Testing.Input;
-using HenFwork.VisualTests.Examples;
 
 namespace HenFwork.VisualTests.Graphics2d
 {
