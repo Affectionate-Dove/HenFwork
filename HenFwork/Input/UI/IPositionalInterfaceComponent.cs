@@ -3,7 +3,7 @@
 // See the LICENSE file in the repository root for full license text.
 
 using HenBstractions.Input;
-using HenFwork.Graphics2d;
+using HenFwork.Graphics2d.Layouts;
 
 namespace HenFwork.Input.UI
 {

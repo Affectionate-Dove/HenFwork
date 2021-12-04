@@ -5,7 +5,7 @@
 using HenBstractions.Numerics;
 using System.Numerics;
 
-namespace HenFwork.Graphics2d
+namespace HenFwork.Graphics2d.Layouts
 {
     public readonly struct DrawableLayoutInfo
     {

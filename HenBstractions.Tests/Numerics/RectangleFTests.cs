@@ -7,7 +7,7 @@ using NUnit.Framework;
 using System;
 using System.Numerics;
 
-namespace HenFwork.Tests.Numerics
+namespace HenBstractions.Tests.Numerics
 {
     public class RectangleFTests
     {
