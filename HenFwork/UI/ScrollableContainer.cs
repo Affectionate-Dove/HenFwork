@@ -24,7 +24,7 @@ namespace HenFwork.UI
                 ContentContainer.AutoSizeAxes = direction == Direction.Horizontal ? Axes.X : Axes.Y;
                 ContentContainer.RelativeSizeAxes = direction == Direction.Horizontal ? Axes.Y : Axes.X;
                 ContentContainer.Size = System.Numerics.Vector2.One;
-                ScrollBarContainer.Direction = value;
+                ScrollBar.Direction = value;
             }
         }
 
@@ -52,7 +52,7 @@ namespace HenFwork.UI
 
         public float ScrollOnActionAmount { get; set; }
 
-        public ScrollBarContainer ScrollBarContainer { get; }
+        public ScrollBarContainer ScrollBar { get; }
 
         protected Container ContentContainer { get; }
 
@@ -63,7 +63,7 @@ namespace HenFwork.UI
                 RelativeSizeAxes = Axes.Both
             });
             base.AddChild(ContentContainer = new());
-            base.AddChild(ScrollBarContainer = new ScrollBarContainer());
+            base.AddChild(ScrollBar = new ScrollBarContainer());
             Direction = Direction.Vertical;
             Masking = true;
         }
@@ -92,7 +92,7 @@ namespace HenFwork.UI
         {
             CalculateScrollInfo(scroll, out var absoluteScroll, out var relativeScroll);
 
-            ScrollBarContainer.UpdateScrollPosition(relativeScroll);
+            ScrollBar.UpdateScrollPosition(relativeScroll);
 
             if (Direction == Direction.Vertical)
                 ContentContainer.Offset = new(0, absoluteScroll);
@@ -115,127 +115,127 @@ namespace HenFwork.UI
             else
                 relativeScroll = -absoluteScroll / maxScroll;
         }
-    }
 
-    public class ScrollBarContainer : Container
-    {
-        private readonly Rectangle background;
-        private readonly Rectangle body;
-        private ColorInfo backgroundColor;
-        private ColorInfo foregroundColor;
-        private float thickness;
-        private Direction direction;
-        private float barHeight;
-        public static float DEFAULT_THICKNESS { get; set; } = 10;
-        public static float DEFAULT_BAR_HEIGHT { get; set; } = 50;
-        public static ColorInfo DEFAULT_BACKGROUND_COLOR { get; set; } = ColorInfo.DARKGRAY;
-        public static ColorInfo DEFAULT_FOREGROUND_COLOR { get; set; } = ColorInfo.LIGHTGRAY;
-
-        public float Thickness
+        public class ScrollBarContainer : Container
         {
-            get => thickness; set
-            {
-                if (thickness == value)
-                    return;
+            protected const float DEFAULT_THICKNESS = 10;
+            protected const float DEFAULT_BAR_HEIGHT = 50;
+            private static ColorInfo default_background_color = ColorInfo.DARKGRAY;
+            private static ColorInfo default_foreground_color = ColorInfo.LIGHTGRAY;
+            private readonly Rectangle background;
+            private readonly Rectangle body;
+            private ColorInfo backgroundColor;
+            private ColorInfo foregroundColor;
+            private float thickness;
+            private Direction direction;
+            private float barHeight;
 
-                thickness = value;
-                LayoutValid = false;
+            public float Thickness
+            {
+                get => thickness; set
+                {
+                    if (thickness == value)
+                        return;
+
+                    thickness = value;
+                    LayoutValid = false;
+                }
             }
-        }
 
-        public Direction Direction
-        {
-            get => direction; set
+            public Direction Direction
             {
-                if (direction == value)
-                    return;
+                get => direction; set
+                {
+                    if (direction == value)
+                        return;
 
-                direction = value;
-                LayoutValid = false;
+                    direction = value;
+                    LayoutValid = false;
+                }
             }
-        }
 
-        public ColorInfo BackgroundColor
-        {
-            get => backgroundColor; set
+            public ColorInfo BackgroundColor
             {
-                backgroundColor = value;
-                UpdateColors();
+                get => backgroundColor; set
+                {
+                    backgroundColor = value;
+                    UpdateColors();
+                }
             }
-        }
 
-        public ColorInfo ForegroundColor
-        {
-            get => foregroundColor; set
+            public ColorInfo ForegroundColor
             {
-                foregroundColor = value;
-                UpdateColors();
+                get => foregroundColor; set
+                {
+                    foregroundColor = value;
+                    UpdateColors();
+                }
             }
-        }
 
-        public float BarHeight
-        {
-            get => barHeight; private set
+            public float BarHeight
             {
-                if (barHeight == value)
-                    return;
+                get => barHeight; private set
+                {
+                    if (barHeight == value)
+                        return;
 
-                barHeight = value;
-                LayoutValid = false;
+                    barHeight = value;
+                    LayoutValid = false;
+                }
             }
-        }
 
-        public ScrollBarContainer()
-        {
-            AddChild(background = new Rectangle()
+            public ScrollBarContainer()
             {
-                RelativeSizeAxes = Axes.Both,
-            });
-            AddChild(body = new Rectangle { RelativePositionAxes = Axes.Both });
-            backgroundColor = DEFAULT_BACKGROUND_COLOR;
-            ForegroundColor = DEFAULT_FOREGROUND_COLOR;
-            barHeight = DEFAULT_BAR_HEIGHT;
-            Thickness = DEFAULT_THICKNESS;
-            Anchor = Origin = System.Numerics.Vector2.One;
-        }
+                AddChild(background = new Rectangle()
+                {
+                    RelativeSizeAxes = Axes.Both,
+                });
+                AddChild(body = new Rectangle { RelativePositionAxes = Axes.Both });
+                backgroundColor = default_background_color;
+                ForegroundColor = default_foreground_color;
+                barHeight = DEFAULT_BAR_HEIGHT;
+                Thickness = DEFAULT_THICKNESS;
+                Anchor = Origin = System.Numerics.Vector2.One;
+            }
 
-        public void UpdateScrollPosition(float percentage)
-        {
-            if (Direction == Direction.Horizontal)
+            public void UpdateScrollPosition(float percentage)
             {
-                body.Offset = new(percentage, 0);
-                body.Origin = body.Offset;
+                if (Direction == Direction.Horizontal)
+                {
+                    body.Offset = new(percentage, 0);
+                    body.Origin = body.Offset;
+                }
+                else
+                {
+                    body.Offset = new(0, percentage);
+                    body.Origin = body.Offset;
+                }
             }
-            else
-            {
-                body.Offset = new(0, percentage);
-                body.Origin = body.Offset;
-            }
-        }
 
-        protected override void OnLayoutUpdate()
-        {
-            base.OnLayoutUpdate();
-            if (Direction == Direction.Horizontal)
+            protected override void OnLayoutUpdate()
             {
-                RelativeSizeAxes = Axes.X;
-                Size = new(1, Thickness);
-                body.RelativeSizeAxes = Axes.Y;
-                body.Size = new(BarHeight, 1);
+                base.OnLayoutUpdate();
+                if (Direction == Direction.Horizontal)
+                {
+                    RelativeSizeAxes = Axes.X;
+                    Size = new(1, Thickness);
+                    body.RelativeSizeAxes = Axes.Y;
+                    body.Size = new(BarHeight, 1);
+                }
+                else
+                {
+                    RelativeSizeAxes = Axes.Y;
+                    Size = new(Thickness, 1);
+                    body.RelativeSizeAxes = Axes.X;
+                    body.Size = new(1, BarHeight);
+                }
             }
-            else
-            {
-                RelativeSizeAxes = Axes.Y;
-                Size = new(Thickness, 1);
-                body.RelativeSizeAxes = Axes.X;
-                body.Size = new(1, BarHeight);
-            }
-        }
 
-        private void UpdateColors()
-        {
-            background.Color = BackgroundColor;
-            body.Color = ForegroundColor;
+            private void UpdateColors()
+            {
+                background.Color = BackgroundColor;
+                body.Color = ForegroundColor;
+            }
         }
     }
 }
