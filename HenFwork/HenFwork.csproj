@@ -6,6 +6,7 @@
     <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
     <RepositoryUrl>https://github.com/Affectionate-Dove/HenFwork</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
+    <Nullable>annotations</Nullable>
   </PropertyGroup>
 
 
