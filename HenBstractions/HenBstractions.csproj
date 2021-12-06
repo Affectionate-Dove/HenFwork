@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <Nullable>enable</Nullable>
 	<EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
 	<RepositoryUrl>https://github.com/Affectionate-Dove/HenFwork</RepositoryUrl>
@@ -9,7 +9,7 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Raylib-cs" Version="3.7.0.1">
+		<PackageReference Include="Raylib-cs" Version="4.0.0-alpha.1">
 			<!--Makes the Raylib-cs assembly invisibile to dependents-->
 			<PrivateAssets>compile</PrivateAssets>
 		</PackageReference>
