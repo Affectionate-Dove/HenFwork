@@ -4,8 +4,8 @@
 
 using HenBstractions.Numerics;
 using HenFwork.Collisions;
-using HenFwork.Worlds.Mediums;
-using HenFwork.Worlds.Nodes;
+using HenFwork.Worlds.Functional.Mediums;
+using HenFwork.Worlds.Functional.Nodes;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
 using System.Collections.Generic;
