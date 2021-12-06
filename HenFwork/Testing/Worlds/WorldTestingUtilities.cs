@@ -3,9 +3,9 @@
 // See the LICENSE file in the repository root for full license text.
 
 using HenBstractions.Numerics;
-using HenFwork.Worlds;
-using HenFwork.Worlds.Mediums;
-using HenFwork.Worlds.Nodes;
+using HenFwork.Worlds.Functional;
+using HenFwork.Worlds.Functional.Mediums;
+using HenFwork.Worlds.Functional.Nodes;
 using System.Collections.Generic;
 using System.Numerics;
 
@@ -13,9 +13,9 @@ namespace HenFwork.Testing.Worlds
 {
     public static class WorldTestingUtilities
     {
-        public static World GetExampleWorld()
+        public static NodeWorld GetExampleWorld()
         {
-            var world = new World(new Vector2(10), 2);
+            var world = new NodeWorld(new Vector2(10), 2);
 
             AddNodes(world);
             foreach (var medium in GetSampleMediums())
@@ -24,7 +24,7 @@ namespace HenFwork.Testing.Worlds
             return world;
         }
 
-        private static void AddNodes(World world)
+        private static void AddNodes(NodeWorld world)
         {
             world.AddNode(new TestNode(new(4, 0, 4)));
             world.AddNode(new TestNode(new(3, 4, 8)));

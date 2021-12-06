@@ -4,7 +4,7 @@
 
 using HenFwork.MapEditing.Saves;
 using HenFwork.MapEditing.Saves.PropertySerializers;
-using HenFwork.Worlds.Nodes;
+using HenFwork.Worlds.Functional.Nodes;
 using NUnit.Framework;
 using System.Collections.Generic;
 

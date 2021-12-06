@@ -4,7 +4,7 @@
 
 using HenBstractions.Numerics;
 using HenFwork.MapEditing.Saves;
-using HenFwork.Worlds.Mediums;
+using HenFwork.Worlds.Functional.Mediums;
 using NUnit.Framework;
 
 namespace HenFwork.MapEditing.Tests.Saves
