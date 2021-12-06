@@ -4,8 +4,8 @@
 
 using HenBstractions.Extensions;
 using HenBstractions.Numerics;
-using HenFwork.Worlds.Mediums;
-using HenFwork.Worlds.Nodes;
+using HenFwork.Worlds.Functional.Mediums;
+using HenFwork.Worlds.Functional.Nodes;
 using System;
 using System.Collections.Generic;
 using System.Numerics;

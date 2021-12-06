@@ -3,7 +3,7 @@
 // See the LICENSE file in the repository root for full license text.
 
 using HenFwork.MapEditing.Saves;
-using HenFwork.Worlds.Mediums;
+using HenFwork.Worlds.Functional.Mediums;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;

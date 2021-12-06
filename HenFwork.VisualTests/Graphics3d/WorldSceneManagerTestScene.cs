@@ -10,9 +10,9 @@ using HenFwork.Graphics3d.Shapes;
 using HenFwork.Testing;
 using HenFwork.Testing.Input;
 using HenFwork.UI;
-using HenFwork.Worlds;
-using HenFwork.Worlds.Mediums;
-using HenFwork.Worlds.Nodes;
+using HenFwork.Worlds.Functional;
+using HenFwork.Worlds.Functional.Mediums;
+using HenFwork.Worlds.Functional.Nodes;
 using System;
 using System.Numerics;
 
@@ -22,12 +22,12 @@ namespace HenFwork.VisualTests.Graphics3d
     {
         private readonly WorldSceneManager worldSceneManager;
         private readonly SceneViewer sceneViewer;
-        private readonly World world;
+        private readonly NodeWorld world;
         private readonly ChunksAreaObserverVisualizer observerVisualizer;
 
         public WorldSceneManagerTestScene()
         {
-            world = new World(new(50), 1);
+            world = new NodeWorld(new(50), 1);
             world.AddNode(new TestNode(5, -2, ColorInfo.BLUE));
             const float medium_height = -0.5f;
             world.AddNode(new TestNode(15, 0, ColorInfo.GREEN));
