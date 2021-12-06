@@ -7,7 +7,7 @@ using HenFwork.Testing;
 using HenFwork.Testing.Input;
 using HenFwork.Testing.Worlds;
 using HenFwork.UI;
-using HenFwork.Worlds;
+using HenFwork.Worlds.Functional;
 using System.Numerics;
 
 namespace HenFwork.VisualTests.Graphics2d.Worlds
@@ -15,7 +15,7 @@ namespace HenFwork.VisualTests.Graphics2d.Worlds
     public class WorldViewer2dTestScene : VisualTestScene
     {
         private readonly WorldViewer2d worldViewer2d;
-        private readonly World world;
+        private readonly NodeWorld world;
 
         public WorldViewer2dTestScene()
         {

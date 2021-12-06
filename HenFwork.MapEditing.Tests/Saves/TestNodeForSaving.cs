@@ -3,7 +3,7 @@
 // See the LICENSE file in the repository root for full license text.
 
 using HenFwork.MapEditing.Saves;
-using HenFwork.Worlds.Nodes;
+using HenFwork.Worlds.Functional.Nodes;
 
 namespace HenFwork.MapEditing.Tests.Saves
 {

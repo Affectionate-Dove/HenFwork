@@ -4,7 +4,7 @@
 
 using HenBstractions.Numerics;
 using HenFwork.MapEditing.Saves.PropertySerializers;
-using HenFwork.Worlds.Mediums;
+using HenFwork.Worlds.Functional.Mediums;
 
 namespace HenFwork.MapEditing.Saves
 {

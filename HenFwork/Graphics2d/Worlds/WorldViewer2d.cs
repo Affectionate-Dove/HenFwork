@@ -5,10 +5,10 @@
 using HenBstractions.Extensions;
 using HenBstractions.Graphics;
 using HenBstractions.Numerics;
-using HenFwork.Worlds;
-using HenFwork.Worlds.Chunks;
-using HenFwork.Worlds.Mediums;
-using HenFwork.Worlds.Nodes;
+using HenFwork.Worlds.Functional;
+using HenFwork.Worlds.Functional.Chunks;
+using HenFwork.Worlds.Functional.Mediums;
+using HenFwork.Worlds.Functional.Nodes;
 using System;
 using System.Numerics;
 
@@ -20,7 +20,7 @@ namespace HenFwork.Graphics2d.Worlds
         private readonly Rectangle background;
         private float gridDistance = 2;
 
-        public World World { get; }
+        public NodeWorld World { get; }
 
         /// <summary>
         ///     Defines the point displayed
@@ -69,7 +69,7 @@ namespace HenFwork.Graphics2d.Worlds
             set => camera.FovY = value;
         }
 
-        public WorldViewer2d(World world)
+        public WorldViewer2d(NodeWorld world)
         {
             Target = world.Size / 2;
             FieldOfView = world.Size.Y;

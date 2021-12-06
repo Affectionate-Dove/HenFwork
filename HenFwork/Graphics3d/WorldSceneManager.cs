@@ -5,10 +5,10 @@
 using HenBstractions.Graphics;
 using HenBstractions.Numerics;
 using HenFwork.Graphics3d.Shapes;
-using HenFwork.Worlds;
-using HenFwork.Worlds.Chunks;
-using HenFwork.Worlds.Mediums;
-using HenFwork.Worlds.Nodes;
+using HenFwork.Worlds.Functional;
+using HenFwork.Worlds.Functional.Chunks;
+using HenFwork.Worlds.Functional.Mediums;
+using HenFwork.Worlds.Functional.Nodes;
 using System;
 using System.Collections.Generic;
 using System.Numerics;
@@ -56,7 +56,7 @@ namespace HenFwork.Graphics3d
         public Vector2 ViewPoint { get; set; }
 
         public Scene Scene { get; set; }
-        public World World { get; }
+        public NodeWorld World { get; }
 
         public ChunksAreaObserver Observer { get; }
 
@@ -64,7 +64,7 @@ namespace HenFwork.Graphics3d
         public Func<Node, Spatial, Action<Node, Spatial>> NodeHandlerCreator { get; set; } = DefaultNodeHandlerCreator;
         public Func<Medium, Spatial> MediumSpatialCreator { get; set; } = DefaultMediumSpatialCreator;
 
-        public WorldSceneManager(World world)
+        public WorldSceneManager(NodeWorld world)
         {
             World = world;
             Scene = new Scene();

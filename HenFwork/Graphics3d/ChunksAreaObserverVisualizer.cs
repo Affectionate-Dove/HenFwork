@@ -4,7 +4,7 @@
 
 using HenBstractions.Graphics;
 using HenFwork.Graphics3d.Shapes;
-using HenFwork.Worlds.Chunks;
+using HenFwork.Worlds.Functional.Chunks;
 using System.Collections.Generic;
 using System.Numerics;
 
