@@ -34,6 +34,11 @@ namespace HenFwork.VisualTests
             base.OnUpdate();
         }
 
-        private static void LoadResources() => ModelStore.Load("Resources/Models/building_dock.obj");
+        private static void LoadResources()
+        {
+            ModelStore.Load("Resources/Models/building_dock.obj");
+            ModelStore.Load("Resources/Models/house_type01.obj");
+            ModelStore.Load("Resources/Models/driveway_long.obj");
+        }
     }
 }

@@ -5,6 +5,7 @@
 using HenBstractions.Graphics;
 using HenBstractions.Numerics;
 using HenFwork.Graphics3d.Shapes;
+using HenFwork.Worlds.Decorative;
 using HenFwork.Worlds.Functional;
 using HenFwork.Worlds.Functional.Chunks;
 using HenFwork.Worlds.Functional.Mediums;
@@ -63,6 +64,7 @@ namespace HenFwork.Graphics3d
         public Func<Node, Spatial> NodeSpatialCreator { get; set; } = DefaultNodeSpatialCreator;
         public Func<Node, Spatial, Action<Node, Spatial>> NodeHandlerCreator { get; set; } = DefaultNodeHandlerCreator;
         public Func<Medium, Spatial> MediumSpatialCreator { get; set; } = DefaultMediumSpatialCreator;
+        public DecorativeWorld DecorativeWorld { get; }
 
         public WorldSceneManager(NodeWorld world)
         {
@@ -74,6 +76,23 @@ namespace HenFwork.Graphics3d
             Observer.NodeLeftChunksArea += OnNodeExit;
             Observer.MediumEnteredChunksArea += OnMediumEntrance;
             Observer.MediumLeftChunksArea += OnMediumExit;
+        }
+
+        public WorldSceneManager(DecorativeWorld world)
+        {
+            DecorativeWorld = world;
+            Scene = new();
+
+            foreach (var decoration in DecorativeWorld.Decorations)
+            {
+                Scene.Spatials.Add(new ModelSpatial
+                {
+                    Position = decoration.Position,
+                    Model = Game.ModelStore.Get(decoration.ModelName),
+                    Rotation = decoration.Rotation,
+                    Scale = decoration.Scale
+                });
+            }
         }
 
         public static Action<Node, Spatial> DefaultNodeHandlerCreator(Node node, Spatial spatial) => DefaultNodeHandler;
