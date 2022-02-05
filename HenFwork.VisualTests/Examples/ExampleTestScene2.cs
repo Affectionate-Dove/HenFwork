@@ -5,7 +5,7 @@
 using HenBstractions.Graphics;
 using HenFwork.Testing;
 using HenFwork.Testing.Input;
-using HenFwork.UI;
+using System.Collections.Generic;
 using System.Numerics;
 
 namespace HenFwork.VisualTests.Examples
@@ -14,19 +14,17 @@ namespace HenFwork.VisualTests.Examples
     {
         private readonly ExampleDrawable drawable;
 
+        public override Dictionary<List<SceneControls>, string> ControlsDescriptions { get; } = new()
+        {
+            [new List<SceneControls> { SceneControls.One }] = "Change the drawable's color"
+        };
+
         public ExampleTestScene2()
         {
             AddChild(drawable = new ExampleDrawable("Sample text 2")
             {
                 Offset = new Vector2(150, 50),
                 Color = new(200, 60, 30)
-            });
-            AddChild(new SpriteText
-            {
-                Anchor = new(1),
-                Origin = new(1),
-                Text = "Press 1 to change the drawable's color.",
-                TextAlignment = Vector2.One
             });
         }
 
