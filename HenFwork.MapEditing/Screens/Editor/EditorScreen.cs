@@ -17,6 +17,8 @@ namespace HenFwork.MapEditing.Screens.Editor
 
         private void CreateLayout()
         {
+            AddChild(new WorldEditViewer());
+
             AddChild(new ToolsToolbar<TInputAction>
             {
                 RelativeSizeAxes = Axes.Y,
