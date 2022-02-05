@@ -6,7 +6,6 @@ using HenBstractions.Graphics;
 using HenFwork.Graphics2d;
 using HenFwork.Screens;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace HenFwork.MapEditing.Screens.Editor
 {
@@ -14,8 +13,22 @@ namespace HenFwork.MapEditing.Screens.Editor
     {
         private const float ACTIONS_TOOLBAR_SIZE = 40;
         private const float TOOLS_TOOLBAR_SIZE = 50;
+        private const string cursor_img_path = @"Resources\Images\Tools\cursor.png";
+        private const string add_img_path = @"Resources\Images\Tools\add.png";
+        private const string rotate_img_path = @"Resources\Images\Tools\rotate.png";
+        private const string resize_img_path = @"Resources\Images\Tools\resize.png";
+        private static readonly string[] toolImgs = new[] { cursor_img_path, add_img_path, rotate_img_path, resize_img_path };
 
-        public EditorScreen() => CreateLayout();
+        public EditorScreen()
+        {
+            // TODO: this should be simpler + Screen.OnExit() should exist
+            foreach (var toolImg in toolImgs)
+            {
+                if (!Game.TextureStore.IsLoaded(toolImg))
+                    Game.TextureStore.Load(toolImg).GenerateMipmaps();
+            }
+            CreateLayout();
+        }
 
         private static Container CreateToolsToolbar()
         {
@@ -47,7 +60,7 @@ namespace HenFwork.MapEditing.Screens.Editor
             };
             container.AddChild(flowContainer);
 
-            foreach (var sampleButton in CreatePlaceholderActionButtons().Reverse())
+            foreach (var sampleButton in CreatePlaceholderTools())
                 flowContainer.AddChild(sampleButton);
 
             return container;
@@ -89,6 +102,42 @@ namespace HenFwork.MapEditing.Screens.Editor
             return container;
         }
 
+        private static IEnumerable<Drawable> CreatePlaceholderTools()
+        {
+            static Drawable createPlaceholderTool(string imgPath)
+            {
+                var container = new Container
+                {
+                    RelativeSizeAxes = Axes.Both,
+                    FillMode = FillMode.Fit,
+                };
+
+                container.AddChild(new Rectangle
+                {
+                    RelativeSizeAxes = Axes.Both,
+                    Color = new(150, 150, 150, 255),
+                    BorderColor = new(255, 255, 255, 90),
+                    BorderThickness = 3
+                });
+
+                container.AddChild(new Sprite
+                {
+                    RelativeSizeAxes = Axes.Both,
+                    FillMode = FillMode.Fit,
+                    AutoFillModeProportions = true,
+                    Size = new(0.6f),
+                    Anchor = new(0.5f),
+                    Origin = new(0.5f),
+                    Texture = Game.TextureStore.Get(imgPath)
+                });
+
+                return container;
+            }
+
+            foreach (var toolImg in toolImgs)
+                yield return createPlaceholderTool(toolImg);
+        }
+
         private static IEnumerable<Rectangle> CreatePlaceholderActionButtons()
         {
             var colors = new ColorInfo[]
@@ -110,7 +159,7 @@ namespace HenFwork.MapEditing.Screens.Editor
                     FillMode = FillMode.Fit,
                     RelativeSizeAxes = Axes.Both,
                     BorderThickness = 3,
-                    BorderColor = new(0,0,0, 100), //new(200, 200, 200),
+                    BorderColor = new(255, 255, 255, 200), //new(200, 200, 200),
                     Color = color
                 };
             }
