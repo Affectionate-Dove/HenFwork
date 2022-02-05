@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace HenFwork.MapEditing.Screens.Editor
 {
-    public class ToolsToolbar : Container
+    public class ToolsToolbar<TInputAction> : Container
     {
         private const string cursor_img_path = @"Resources\Images\Tools\cursor.png";
         private const string add_img_path = @"Resources\Images\Tools\add.png";
@@ -52,32 +52,20 @@ namespace HenFwork.MapEditing.Screens.Editor
         {
             static Drawable createPlaceholderTool(string imgPath)
             {
-                var container = new Container
+                var button = new ToolbarButton<TInputAction>
                 {
-                    RelativeSizeAxes = Axes.Both,
-                    FillMode = FillMode.Fit,
+                    Sprite = new Sprite
+                    {
+                        RelativeSizeAxes = Axes.Both,
+                        FillMode = FillMode.Fit,
+                        AutoFillModeProportions = true,
+                        Anchor = new(0.5f),
+                        Origin = new(0.5f),
+                        Texture = Game.TextureStore.Get(imgPath)
+                    }
                 };
 
-                container.AddChild(new Rectangle
-                {
-                    RelativeSizeAxes = Axes.Both,
-                    Color = new(150, 150, 150, 255),
-                    BorderColor = new(255, 255, 255, 90),
-                    BorderThickness = 3
-                });
-
-                container.AddChild(new Sprite
-                {
-                    RelativeSizeAxes = Axes.Both,
-                    FillMode = FillMode.Fit,
-                    AutoFillModeProportions = true,
-                    Size = new(0.6f),
-                    Anchor = new(0.5f),
-                    Origin = new(0.5f),
-                    Texture = Game.TextureStore.Get(imgPath)
-                });
-
-                return container;
+                return button;
             }
 
             foreach (var toolImg in toolImgs)

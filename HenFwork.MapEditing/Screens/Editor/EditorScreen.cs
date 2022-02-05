@@ -7,7 +7,7 @@ using HenFwork.Screens;
 
 namespace HenFwork.MapEditing.Screens.Editor
 {
-    public class EditorScreen : Screen
+    public class EditorScreen<TInputAction> : Screen
     {
         private const float ACTIONS_TOOLBAR_SIZE = 40;
         private const float TOOLS_TOOLBAR_SIZE = 42;
@@ -17,7 +17,7 @@ namespace HenFwork.MapEditing.Screens.Editor
 
         private void CreateLayout()
         {
-            AddChild(new ToolsToolbar
+            AddChild(new ToolsToolbar<TInputAction>
             {
                 RelativeSizeAxes = Axes.Y,
                 Size = new(TOOLS_TOOLBAR_SIZE, 1),
