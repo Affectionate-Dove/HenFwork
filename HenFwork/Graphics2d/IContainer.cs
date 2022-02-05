@@ -12,7 +12,7 @@ namespace HenFwork.Graphics2d
         ContainerLayoutInfo ContainerLayoutInfo { get; }
     }
 
-    public interface IContainer<T> : IContainer
+    public interface IContainer<out T> : IContainer
     {
         public IEnumerable<T> Children { get; }
     }
