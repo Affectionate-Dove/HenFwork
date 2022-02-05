@@ -4,11 +4,12 @@
 
 using HenBstractions.Graphics;
 using HenFwork.Graphics2d;
+using HenFwork.Random;
 using System.Collections.Generic;
 
 namespace HenFwork.MapEditing.Screens.Editor
 {
-    public class ActionsToolbar : Container
+    public class ActionsToolbar<TInputAction> : Container
     {
         public ActionsToolbar()
         {
@@ -39,9 +40,9 @@ namespace HenFwork.MapEditing.Screens.Editor
                 flowContainer.AddChild(sampleButton);
         }
 
-        private static IEnumerable<Rectangle> CreatePlaceholderActionButtons()
+        private static IEnumerable<Drawable> CreatePlaceholderActionButtons()
         {
-            var colors = new ColorInfo[]
+            var baseColors = new ColorInfo[]
             {
                 ColorInfo.ORANGE,
                 ColorInfo.VIOLET,
@@ -53,15 +54,19 @@ namespace HenFwork.MapEditing.Screens.Editor
                 ColorInfo.DARKPURPLE
             };
 
+            const int actions_count = 20;
+            var colors = new List<ColorInfo>(actions_count);
+            for (var i = 0; i < actions_count; i++)
+                colors.Add(baseColors[RNG.GetIntBelow(baseColors.Length)]);
+
             foreach (var color in colors)
             {
-                yield return new Rectangle
+                yield return new ToolbarButton<TInputAction>
                 {
                     FillMode = FillMode.Fit,
                     RelativeSizeAxes = Axes.Both,
                     BorderThickness = 3,
-                    BorderColor = new(255, 255, 255, 200), //new(200, 200, 200),
-                    Color = color
+                    EnabledColors = new(color, new(255, 255, 255, 200), null)
                 };
             }
         }

@@ -11,7 +11,7 @@ namespace HenFwork.MapEditing.Screens.Editor
     {
         private const float ACTIONS_TOOLBAR_SIZE = 40;
         private const float TOOLS_TOOLBAR_SIZE = 42;
-        private const float toolbars_margins = 80;
+        private const float toolbars_margins = 100;
 
         public EditorScreen() => CreateLayout();
 
@@ -23,7 +23,7 @@ namespace HenFwork.MapEditing.Screens.Editor
                 Size = new(TOOLS_TOOLBAR_SIZE, 1),
                 Padding = new MarginPadding { Vertical = toolbars_margins }
             });
-            AddChild(new ActionsToolbar
+            AddChild(new ActionsToolbar<TInputAction>
             {
                 RelativeSizeAxes = Axes.X,
                 Size = new(1, ACTIONS_TOOLBAR_SIZE),
