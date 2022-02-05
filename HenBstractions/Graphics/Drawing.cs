@@ -32,7 +32,14 @@ namespace HenBstractions.Graphics
 
         public static void DrawRectangle(RectangleF rectangle, ColorInfo color) => Raylib.DrawRectangleV(rectangle.TopLeft, rectangle.Size, color);
 
-        public static void DrawRectangleLines(RectangleF rectangle, float thickness, ColorInfo color) => Raylib.DrawRectangleLinesEx(ToRaylibRectangle(rectangle), (int)thickness, color);
+        public static void DrawRectangleLines(RectangleF rectangle, float thickness, ColorInfo color)
+        {
+            var ht = thickness * 0.5f;
+            DrawLine(new(rectangle.Left, rectangle.Top + ht), new(rectangle.Right - thickness, rectangle.Top + ht), thickness, color);
+            DrawLine(new(rectangle.Right - ht, rectangle.Top), new(rectangle.Right - ht, rectangle.Bottom - thickness), thickness, color);
+            DrawLine(new(rectangle.Right, rectangle.Bottom - ht), new(rectangle.Left + thickness, rectangle.Bottom - ht), thickness, color);
+            DrawLine(new(rectangle.Left + ht, rectangle.Bottom), new(rectangle.Left + ht, rectangle.Top + thickness), thickness, color);
+        }
 
         public static void DrawTriangle3D(Triangle3 triangle, ColorInfo color) => Raylib.DrawTriangle3D(triangle.A, triangle.B, triangle.C, color);
 
