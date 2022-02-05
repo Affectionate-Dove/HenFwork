@@ -43,6 +43,8 @@ namespace HenFwork.Testing.UI
                 foreach (var (controls, description) in testScene.ControlsDescriptions)
                     flowContainer.AddChild(new SpriteText { Text = $"{string.Join(", ", controls)}: {description}" });
             }
+
+            Visible = testScene.Description is not null || (testScene.ControlsDescriptions is not null && testScene.ControlsDescriptions.Count > 0);
         }
     }
 }

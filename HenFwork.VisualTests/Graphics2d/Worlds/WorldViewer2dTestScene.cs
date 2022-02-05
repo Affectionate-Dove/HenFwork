@@ -6,8 +6,8 @@ using HenFwork.Graphics2d.Worlds;
 using HenFwork.Testing;
 using HenFwork.Testing.Input;
 using HenFwork.Testing.Worlds;
-using HenFwork.UI;
 using HenFwork.Worlds.Functional;
+using System.Collections.Generic;
 using System.Numerics;
 
 namespace HenFwork.VisualTests.Graphics2d.Worlds
@@ -16,6 +16,14 @@ namespace HenFwork.VisualTests.Graphics2d.Worlds
     {
         private readonly WorldViewer2d worldViewer2d;
         private readonly NodeWorld world;
+
+        public override Dictionary<List<SceneControls>, string> ControlsDescriptions { get; } = new()
+        {
+            [new() { SceneControls.One }] = "decrease grid spacing by 0.5",
+            [new() { SceneControls.Two }] = "increase grid spacing by 0.5",
+            [new() { SceneControls.Up, SceneControls.Down, SceneControls.Left, SceneControls.Right }] = "move view",
+            [new() { SceneControls.Nine, SceneControls.Zero }] = "increase/decrease zoom",
+        };
 
         public WorldViewer2dTestScene()
         {
@@ -27,7 +35,6 @@ namespace HenFwork.VisualTests.Graphics2d.Worlds
                 Origin = new Vector2(0.5f)
             };
             AddChild(worldViewer2d);
-            AddChild(GenerateInfoText());
         }
 
         public override bool OnActionPressed(SceneControls action)
@@ -69,23 +76,6 @@ namespace HenFwork.VisualTests.Graphics2d.Worlds
                 default:
                     return base.OnActionPressed(action);
             }
-        }
-
-        private static SpriteText GenerateInfoText()
-        {
-            var t =
-                "1 - decrease grid spacing by 0.5\n" +
-                "2 - increase grid spacing by 0.5\n" +
-                "↑/↓/←/→ - move view\n" +
-                "9/0 - increase/decrease zoom";
-
-            return new()
-            {
-                Anchor = new(1, 1),
-                Origin = new(1, 1),
-                Size = new(300, 600),
-                Text = t
-            };
         }
     }
 }
