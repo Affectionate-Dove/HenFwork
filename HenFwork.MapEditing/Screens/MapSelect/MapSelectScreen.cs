@@ -6,6 +6,7 @@ using HenFwork.Graphics2d;
 using HenFwork.MapEditing.Saves;
 using HenFwork.Screens;
 using HenFwork.UI;
+using System;
 using System.Collections.Generic;
 
 namespace HenFwork.MapEditing.Screens.MapSelect
@@ -13,8 +14,9 @@ namespace HenFwork.MapEditing.Screens.MapSelect
     public class MapSelectScreen : Screen
     {
         private SpriteText mapName;
+        private Button<H> confirmButton;
 
-        public MapSelectScreen(List<WorldSave> worldSaves)
+        public MapSelectScreen(List<WorldSave> worldSaves, Action<WorldSave> confirmAction)
         {
             AddChild(new SpriteText()
             {
@@ -24,7 +26,7 @@ namespace HenFwork.MapEditing.Screens.MapSelect
                 Color = new HenBstractions.Graphics.ColorInfo(21, 37, 69),
                 FontSize = 69
             });
-            CreateLeftSide(worldSaves);
+            CreateLeftSide(worldSaves, confirmAction);
             CreateRightSide();
         }
 
@@ -49,7 +51,7 @@ namespace HenFwork.MapEditing.Screens.MapSelect
                 }
             };
 
-            var button = new Button<H>()
+            confirmButton = new Button<H>()
             {
                 Text = "Confirm",
                 Size = new(0.4f, 50),
@@ -70,10 +72,10 @@ namespace HenFwork.MapEditing.Screens.MapSelect
                 Text = "Jakas gadka szmatka hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh hhhhhhhhhh hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh",
                 FontSize = 20
             });
-            AddChild(button);
+            AddChild(confirmButton);
         }
 
-        private void CreateLeftSide(List<WorldSave> worldSaves)
+        private void CreateLeftSide(List<WorldSave> worldSaves, Action<WorldSave> confirmAction)
         {
             var scroll = new ScrollableContainer<H>()
             {
@@ -106,7 +108,11 @@ namespace HenFwork.MapEditing.Screens.MapSelect
                     Text = save.WorldName,
                     Size = new(1f, 75),
                     RelativeSizeAxes = Axes.X,
-                    Action = () => mapName.Text = save.WorldName,
+                    Action = () =>
+                    {
+                        mapName.Text = save.WorldName;
+                        confirmButton.Action = () => confirmAction(save);
+                    },
                 });
             }
         }

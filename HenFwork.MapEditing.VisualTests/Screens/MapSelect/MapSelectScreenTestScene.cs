@@ -5,6 +5,7 @@
 using HenFwork.MapEditing.Saves;
 using HenFwork.MapEditing.Screens.MapSelect;
 using HenFwork.Testing;
+using System;
 using System.Collections.Generic;
 
 namespace HenFwork.MapEditing.VisualTests.Screens.MapSelect
@@ -27,7 +28,8 @@ namespace HenFwork.MapEditing.VisualTests.Screens.MapSelect
             {
                 WorldName = "Map 3"
             });
-            AddChild(new MapSelectScreen(worldSaves));
+            var confirmAction = (WorldSave worldSave) => Console.WriteLine(worldSave.WorldName);
+            AddChild(new MapSelectScreen(worldSaves, confirmAction));
         }
     }
 }
