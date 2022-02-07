@@ -12,6 +12,8 @@ namespace HenFwork.MapEditing.Screens.MapSelect
 {
     public class MapSelectScreen : Screen
     {
+        private SpriteText mapName;
+
         public MapSelectScreen(List<WorldSave> worldSaves)
         {
             AddChild(new SpriteText()
@@ -59,9 +61,8 @@ namespace HenFwork.MapEditing.Screens.MapSelect
 
             AddChild(descriptionContainer);
             descriptionContainer.AddChild(flow);
-            flow.AddChild(new SpriteText()
+            flow.AddChild(mapName = new SpriteText()
             {
-                Text = "Map 2",
                 FontSize = 35
             });
             flow.AddChild(new SpriteText()
@@ -104,7 +105,8 @@ namespace HenFwork.MapEditing.Screens.MapSelect
                 {
                     Text = save.WorldName,
                     Size = new(1f, 75),
-                    RelativeSizeAxes = Axes.X
+                    RelativeSizeAxes = Axes.X,
+                    Action = () => mapName.Text = save.WorldName,
                 });
             }
         }
