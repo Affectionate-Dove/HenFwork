@@ -3,19 +3,16 @@
 // See the LICENSE file in the repository root for full license text.
 
 using HenFwork.Graphics2d;
+using HenFwork.MapEditing.Saves;
 using HenFwork.Screens;
 using HenFwork.UI;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace HenFwork.MapEditing.Screens.MapSelect
 {
     public class MapSelectScreen : Screen
     {
-        public MapSelectScreen()
+        public MapSelectScreen(List<WorldSave> worldSaves)
         {
             AddChild(new SpriteText()
             {
@@ -25,7 +22,7 @@ namespace HenFwork.MapEditing.Screens.MapSelect
                 Color = new HenBstractions.Graphics.ColorInfo(21, 37, 69),
                 FontSize = 69
             });
-            CreateLeftSide();
+            CreateLeftSide(worldSaves);
             CreateRightSide();
         }
 
@@ -36,7 +33,6 @@ namespace HenFwork.MapEditing.Screens.MapSelect
                 Anchor = new(0.6f, 0.2f),
                 RelativeSizeAxes = Axes.Both,
                 Size = new(0.4f, 0.8f),
-
             };
 
             var flow = new FillFlowContainer()
@@ -76,7 +72,7 @@ namespace HenFwork.MapEditing.Screens.MapSelect
             AddChild(button);
         }
 
-        private void CreateLeftSide()
+        private void CreateLeftSide(List<WorldSave> worldSaves)
         {
             var scroll = new ScrollableContainer<H>()
             {
@@ -99,26 +95,22 @@ namespace HenFwork.MapEditing.Screens.MapSelect
                 Spacing = 10
             };
 
-
             AddChild(scroll);
             scroll.AddChild(flow);
 
-            for (var i = 0; i < 10; i++)
+            foreach (var save in worldSaves)
             {
                 flow.AddChild(new Button<H>()
                 {
-                    Text = $"Map {i + 1}",
+                    Text = save.WorldName,
                     Size = new(1f, 75),
                     RelativeSizeAxes = Axes.X
                 });
             }
         }
-
     }
 
     public enum H
     {
-
     }
-
 }
