@@ -7,6 +7,11 @@ using HenFwork.Screens;
 
 namespace HenFwork.MapEditing.Screens.Editor
 {
+    /// <summary>
+    ///     Used for editing a map. Allows the user
+    ///     to select various tools and actions, and use
+    ///     them on the map.
+    /// </summary>
     public class EditorScreen<TInputAction> : Screen
     {
         private const float ACTIONS_TOOLBAR_SIZE = 40;

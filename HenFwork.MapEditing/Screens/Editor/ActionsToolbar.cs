@@ -9,6 +9,13 @@ using System.Collections.Generic;
 
 namespace HenFwork.MapEditing.Screens.Editor
 {
+    /// <summary>
+    ///     Contains (quick?) actions for the currently selected mapping tool.
+    /// </summary>
+    /// <remarks>
+    ///     As an example, for the "add" tool, the actions could be
+    ///     recently added objects.
+    /// </remarks>
     public class ActionsToolbar<TInputAction> : Container
     {
         public ActionsToolbar()

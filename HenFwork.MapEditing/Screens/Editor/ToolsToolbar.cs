@@ -8,6 +8,9 @@ using System.Linq;
 
 namespace HenFwork.MapEditing.Screens.Editor
 {
+    /// <summary>
+    ///     Contains selectable mapping tools.
+    /// </summary>
     public class ToolsToolbar<TInputAction> : Container
     {
         private const string cursor_img_path = @"Resources\Images\Tools\cursor.png";

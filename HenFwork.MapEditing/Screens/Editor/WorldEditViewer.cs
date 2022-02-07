@@ -13,6 +13,9 @@ using System.Numerics;
 
 namespace HenFwork.MapEditing.Screens.Editor
 {
+    /// <summary>
+    ///     Displays an editable view of a map.
+    /// </summary>
     // TODO: For now just a placeholder displaying an object
     public class WorldEditViewer : Container
     {
