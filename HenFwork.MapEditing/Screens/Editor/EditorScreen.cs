@@ -12,7 +12,7 @@ namespace HenFwork.MapEditing.Screens.Editor
     ///     to select various tools and actions, and use
     ///     them on the map.
     /// </summary>
-    public class EditorScreen<TInputAction> : Screen
+    public class EditorScreen : Screen
     {
         private const float ACTIONS_TOOLBAR_SIZE = 40;
         private const float TOOLS_TOOLBAR_SIZE = 42;
@@ -24,13 +24,13 @@ namespace HenFwork.MapEditing.Screens.Editor
         {
             AddChild(new WorldEditViewer());
 
-            AddChild(new ToolsToolbar<TInputAction>
+            AddChild(new ToolsToolbar
             {
                 RelativeSizeAxes = Axes.Y,
                 Size = new(TOOLS_TOOLBAR_SIZE, 1),
                 Padding = new MarginPadding { Vertical = toolbars_margins }
             });
-            AddChild(new ActionsToolbar<TInputAction>
+            AddChild(new ActionsToolbar
             {
                 RelativeSizeAxes = Axes.X,
                 Size = new(1, ACTIONS_TOOLBAR_SIZE),

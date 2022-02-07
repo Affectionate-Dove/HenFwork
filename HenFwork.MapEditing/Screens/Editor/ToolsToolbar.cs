@@ -11,7 +11,7 @@ namespace HenFwork.MapEditing.Screens.Editor
     /// <summary>
     ///     Contains selectable mapping tools.
     /// </summary>
-    public class ToolsToolbar<TInputAction> : Container
+    public class ToolsToolbar : Container
     {
         private const string cursor_img_path = @"Resources\Images\Tools\cursor.png";
         private const string add_img_path = @"Resources\Images\Tools\add.png";
@@ -55,7 +55,7 @@ namespace HenFwork.MapEditing.Screens.Editor
         {
             static Drawable createPlaceholderTool(string imgPath)
             {
-                var button = new ToolbarButton<TInputAction>
+                var button = new ToolbarButton
                 {
                     Sprite = new Sprite
                     {

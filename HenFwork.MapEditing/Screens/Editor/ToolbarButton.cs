@@ -4,11 +4,12 @@
 
 using HenBstractions.Graphics;
 using HenFwork.Graphics2d;
+using HenFwork.MapEditing.Input;
 using HenFwork.UI;
 
 namespace HenFwork.MapEditing.Screens.Editor
 {
-    public class ToolbarButton<TInputAction> : Button<TInputAction>
+    public class ToolbarButton : Button<EditorControls>
     {
         private readonly Container spriteContainer;
         private Sprite sprite;

@@ -16,7 +16,7 @@ namespace HenFwork.MapEditing.Screens.Editor
     ///     As an example, for the "add" tool, the actions could be
     ///     recently added objects.
     /// </remarks>
-    public class ActionsToolbar<TInputAction> : Container
+    public class ActionsToolbar : Container
     {
         public ActionsToolbar()
         {
@@ -68,7 +68,7 @@ namespace HenFwork.MapEditing.Screens.Editor
 
             foreach (var color in colors)
             {
-                yield return new ToolbarButton<TInputAction>
+                yield return new ToolbarButton
                 {
                     FillMode = FillMode.Fit,
                     RelativeSizeAxes = Axes.Both,
