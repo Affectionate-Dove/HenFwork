@@ -2,10 +2,13 @@
 // Licensed under the Affectionate Dove Limited Code Viewing License.
 // See the LICENSE file in the repository root for full license text.
 
-namespace HenFwork.MapEditing.VisualTests
+namespace HenFwork.MapEditing.Input
 {
-    internal class Program
+    public enum EditorControls
     {
-        private static void Main() => Host.Run(new MapEditingVisualTestsGame());
+        Next,
+        Previous,
+        Select,
+        Back,
     }
 }
