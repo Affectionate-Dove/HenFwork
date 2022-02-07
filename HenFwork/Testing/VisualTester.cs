@@ -70,6 +70,8 @@ namespace HenFwork.Testing
             });
 
             ChangeScene();
+
+            HotReloadManager.HotReloaded += OnHotReload;
         }
 
         public bool OnActionPressed(VisualTesterControls action)
@@ -108,6 +110,8 @@ namespace HenFwork.Testing
             Spacing = 5,
             Direction = Direction.Vertical
         };
+
+        private void OnHotReload() => ChangeScene();
 
         private VisualTestScene CreateVisualTestScene(Type type)
         {
