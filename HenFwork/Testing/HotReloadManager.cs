@@ -9,6 +9,9 @@ using System;
 
 namespace HenFwork.Testing
 {
+    /// <summary>
+    ///     Provides an event that fires upon dotnet hot reload.
+    /// </summary>
     public static class HotReloadManager
     {
         public static event Action HotReloaded = delegate { };
