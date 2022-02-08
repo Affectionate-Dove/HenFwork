@@ -196,7 +196,7 @@ namespace HenFwork.Input.UI
                         return;
                     }
                 }
-            };
+            }
 
             if (componentToFocus is not null)
                 throw new InvalidOperationException($"The requested {nameof(componentToFocus)} is not inside the {nameof(Drawable)} tree of the {nameof(ScreenStack)}.");
