@@ -29,7 +29,7 @@ namespace HenFwork.Input
         /// keyboard keys that have to be pressed together
         /// to trigger that <see cref="TInputAction"/>.
         /// </summary>
-        private readonly Dictionary<TInputAction, ISet<KeyboardKey>> actionKeyBindings = new();
+        private readonly Dictionary<TInputAction, Keybind> actionKeyBindings = new();
 
         /// <summary>
         /// It may be expensive to check all keyboard keys
@@ -53,7 +53,7 @@ namespace HenFwork.Input
         /// keyboard keys that have to be pressed together
         /// to trigger that <see cref="TInputAction"/>.
         /// </summary>
-        public IReadOnlyDictionary<TInputAction, ISet<KeyboardKey>> ActionKeyBindings => actionKeyBindings;
+        public IReadOnlyDictionary<TInputAction, Keybind> ActionKeyBindings => actionKeyBindings;
 
         /// <summary>
         /// A list of <see cref="TInputAction"/>s that were
@@ -73,7 +73,7 @@ namespace HenFwork.Input
         /// triggering <see cref="OnActionRelease"/>
         /// for each of them.
         /// </remarks>
-        public void SetKeyBindings(IReadOnlyDictionary<TInputAction, ISet<KeyboardKey>> keyBindings)
+        public void SetKeyBindings(IReadOnlyDictionary<TInputAction, Keybind> keyBindings)
         {
             ReleaseAllActions();
             actionKeyBindings.Clear();
@@ -96,13 +96,13 @@ namespace HenFwork.Input
         {
             foreach (var key in ActionKeyBindings[action])
             {
-                if (!this.Inputs.IsKeyDown((KeyboardKey)key))
+                if (!Inputs.IsKeyDown(key))
                     return false;
             }
             return true;
         }
 
-        protected abstract Dictionary<TInputAction, ISet<KeyboardKey>> CreateDefaultKeybindings();
+        protected abstract Dictionary<TInputAction, Keybind> CreateDefaultKeybindings();
 
         protected virtual InputPropagator<TInputAction> CreatePropagator() => new();
 
@@ -124,7 +124,7 @@ namespace HenFwork.Input
         {
             foreach (var monitoredKeyInfo in keysToMonitor)
             {
-                var isPressed = this.Inputs.IsKeyDown((KeyboardKey)monitoredKeyInfo.Key);
+                var isPressed = Inputs.IsKeyDown(monitoredKeyInfo.Key);
                 var justPressed = isPressed && !monitoredKeyInfo.Pressed;
                 monitoredKeyInfo.Pressed = isPressed;
 
