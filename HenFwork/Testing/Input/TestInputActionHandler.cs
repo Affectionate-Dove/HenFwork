@@ -14,14 +14,14 @@ namespace HenFwork.Testing.Input
         {
         }
 
-        protected override Dictionary<TestAction, Keybind> CreateDefaultKeybindings() => new()
+        protected override Dictionary<TestAction, IList<Keybind>> CreateDefaultKeybindings() => new()
         {
-            { TestAction.Up, new(KeyboardKey.KEY_UP) },
-            { TestAction.Down, new(KeyboardKey.KEY_DOWN) },
-            { TestAction.Left, new(KeyboardKey.KEY_LEFT) },
-            { TestAction.Right, new(KeyboardKey.KEY_RIGHT) },
-            { TestAction.Next, new(KeyboardKey.KEY_TAB) },
-            { TestAction.Confirm, new(KeyboardKey.KEY_ENTER) }
+            { TestAction.Up, new List<Keybind> { new(KeyboardKey.KEY_UP) } },
+            { TestAction.Down, new List<Keybind> { new(KeyboardKey.KEY_DOWN) } },
+            { TestAction.Left, new List<Keybind> { new(KeyboardKey.KEY_LEFT) } },
+            { TestAction.Right, new List<Keybind> { new(KeyboardKey.KEY_RIGHT) } },
+            { TestAction.Next, new List<Keybind> { new(KeyboardKey.KEY_TAB) } },
+            { TestAction.Confirm, new List<Keybind> { new(KeyboardKey.KEY_ENTER) } }
         };
     }
 
