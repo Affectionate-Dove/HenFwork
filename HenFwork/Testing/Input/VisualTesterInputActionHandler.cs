@@ -14,10 +14,10 @@ namespace HenFwork.Testing.Input
         {
         }
 
-        protected override Dictionary<VisualTesterControls, ISet<KeyboardKey>> CreateDefaultKeybindings() => new()
+        protected override Dictionary<VisualTesterControls, IList<Keybind>> CreateDefaultKeybindings() => new()
         {
-            { VisualTesterControls.PreviousScene, new HashSet<KeyboardKey> { KeyboardKey.KEY_PAGE_UP } },
-            { VisualTesterControls.NextScene, new HashSet<KeyboardKey> { KeyboardKey.KEY_PAGE_DOWN } }
+            { VisualTesterControls.PreviousScene, new List<Keybind> { new(KeyboardKey.KEY_PAGE_UP) } },
+            { VisualTesterControls.NextScene, new List<Keybind> { new(KeyboardKey.KEY_PAGE_DOWN) } }
         };
     }
 }
