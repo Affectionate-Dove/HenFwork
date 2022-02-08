@@ -14,12 +14,12 @@ namespace HenFwork.MapEditing.Input
         {
         }
 
-        protected override Dictionary<EditorControls, ISet<KeyboardKey>> CreateDefaultKeybindings() => new()
+        protected override Dictionary<EditorControls, IList<Keybind>> CreateDefaultKeybindings() => new()
         {
-            [EditorControls.Select] = new HashSet<KeyboardKey> { KeyboardKey.KEY_ENTER },
-            [EditorControls.Back] = new HashSet<KeyboardKey> { KeyboardKey.KEY_ESCAPE },
-            [EditorControls.Next] = new HashSet<KeyboardKey> { KeyboardKey.KEY_TAB },
-            [EditorControls.Previous] = new HashSet<KeyboardKey> { KeyboardKey.KEY_LEFT_SHIFT, KeyboardKey.KEY_TAB },
+            [EditorControls.Select] = new List<Keybind> { new(KeyboardKey.KEY_ENTER) },
+            [EditorControls.Back] = new List<Keybind> { new(KeyboardKey.KEY_ESCAPE) },
+            [EditorControls.Next] = new List<Keybind> { new(KeyboardKey.KEY_TAB) },
+            [EditorControls.Previous] = new List<Keybind> { new(KeyboardKey.KEY_LEFT_SHIFT, KeyboardKey.KEY_TAB) },
         };
     }
 }
