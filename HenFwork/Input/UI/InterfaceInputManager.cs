@@ -196,7 +196,7 @@ namespace HenFwork.Input.UI
                         return;
                     }
                 }
-            };
+            }
 
             if (componentToFocus is not null)
                 throw new InvalidOperationException($"The requested {nameof(componentToFocus)} is not inside the {nameof(Drawable)} tree of the {nameof(ScreenStack)}.");
@@ -292,7 +292,7 @@ namespace HenFwork.Input.UI
 
         private IInterfaceComponent<TInputAction> HandleDrawable(Drawable drawable)
         {
-            if (drawable is Container container)
+            if (drawable is IContainer<Drawable> container)
             {
                 // If this is a container that's also a disabled component,
                 // it should not be considered at all in the interface tree.
@@ -308,11 +308,11 @@ namespace HenFwork.Input.UI
 
         private class ContainerAndEnumerator
         {
-            public Container Container;
+            public IContainer<Drawable> Container;
             public IEnumerator<Drawable> Enumerator;
             public bool HadComponentChildren;
 
-            public ContainerAndEnumerator(Container container)
+            public ContainerAndEnumerator(IContainer<Drawable> container)
             {
                 Container = container;
                 Enumerator = container.Children.GetEnumerator();
