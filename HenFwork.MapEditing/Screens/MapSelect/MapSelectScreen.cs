@@ -3,6 +3,7 @@
 // See the LICENSE file in the repository root for full license text.
 
 using HenFwork.Graphics2d;
+using HenFwork.MapEditing.Input;
 using HenFwork.MapEditing.Saves;
 using HenFwork.Screens;
 using HenFwork.UI;
@@ -13,8 +14,9 @@ namespace HenFwork.MapEditing.Screens.MapSelect
 {
     public class MapSelectScreen : Screen
     {
+        public static SpriteText confirmMapName;
         private SpriteText mapName;
-        private Button<H> confirmButton;
+        private Button<EditorControls> confirmButton;
 
         public MapSelectScreen(List<WorldSave> worldSaves, Action<WorldSave> confirmAction)
         {
@@ -51,7 +53,14 @@ namespace HenFwork.MapEditing.Screens.MapSelect
                 }
             };
 
-            confirmButton = new Button<H>()
+            var confirmTextContainer = new Container()
+            {
+                Anchor = new(0.6f, 0.8f),
+                RelativeSizeAxes = Axes.Both,
+                Size = new(0.4f, 10)
+            };
+
+            confirmButton = new Button<EditorControls>()
             {
                 Text = "Confirm",
                 Size = new(0.4f, 50),
@@ -73,11 +82,16 @@ namespace HenFwork.MapEditing.Screens.MapSelect
                 FontSize = 20
             });
             AddChild(confirmButton);
+            AddChild(confirmTextContainer);
+            confirmTextContainer.AddChild(confirmMapName = new SpriteText()
+            {
+                FontSize = 10
+            });
         }
 
         private void CreateLeftSide(List<WorldSave> worldSaves, Action<WorldSave> confirmAction)
         {
-            var scroll = new ScrollableContainer<H>()
+            var scroll = new ScrollableContainer<EditorControls>()
             {
                 Anchor = new(0, 0.2f),
                 Size = new(0.6f, 1f),
@@ -103,22 +117,18 @@ namespace HenFwork.MapEditing.Screens.MapSelect
 
             foreach (var save in worldSaves)
             {
-                flow.AddChild(new Button<H>()
+                flow.AddChild(new Button<EditorControls>()
                 {
-                    Text = save.WorldName,
+                    Text = save.Name,
                     Size = new(1f, 75),
                     RelativeSizeAxes = Axes.X,
                     Action = () =>
                     {
-                        mapName.Text = save.WorldName;
+                        mapName.Text = save.Name;
                         confirmButton.Action = () => confirmAction(save);
                     },
                 });
             }
         }
-    }
-
-    public enum H
-    {
     }
 }

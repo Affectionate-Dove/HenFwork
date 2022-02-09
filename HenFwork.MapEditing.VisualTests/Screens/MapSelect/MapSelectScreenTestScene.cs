@@ -5,30 +5,26 @@
 using HenFwork.MapEditing.Saves;
 using HenFwork.MapEditing.Screens.MapSelect;
 using HenFwork.Testing;
-using System;
 using System.Collections.Generic;
 
 namespace HenFwork.MapEditing.VisualTests.Screens.MapSelect
 {
     public class MapSelectScreenTestScene : VisualTestScene
     {
-        public List<Saves.WorldSave> worldSaves = new List<Saves.WorldSave>();
-
         public MapSelectScreenTestScene()
         {
-            worldSaves.Add(new Saves.WorldSave(new List<ChunkSave>())
+            var worldSaves = new List<WorldSave>();
+            for (var i = 1; i < 9; i++)
             {
-                WorldName = "Map 1"
-            });
-            worldSaves.Add(new Saves.WorldSave(new List<ChunkSave>())
+                worldSaves.Add(new WorldSave(new List<ChunkSave>())
+                {
+                    Name = $"Map {i}"
+                });
+            }
+            var confirmAction = (WorldSave worldSave) =>
             {
-                WorldName = "Map 2"
-            });
-            worldSaves.Add(new Saves.WorldSave(new List<ChunkSave>())
-            {
-                WorldName = "Map 3"
-            });
-            var confirmAction = (WorldSave worldSave) => Console.WriteLine(worldSave.WorldName);
+                MapSelectScreen.confirmMapName.Text = worldSave.Name;
+            };
             AddChild(new MapSelectScreen(worldSaves, confirmAction));
         }
     }
