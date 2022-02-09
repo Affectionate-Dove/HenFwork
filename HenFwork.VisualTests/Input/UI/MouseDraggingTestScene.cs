@@ -11,10 +11,17 @@ using System.Numerics;
 
 namespace HenFwork.VisualTests.Input.UI
 {
+    [TestSceneName("Mouse dragging")]
     public class MouseDraggingTestScene : VisualTestScene
     {
         private readonly DraggingManager draggingManager;
         private readonly SpriteText text;
+
+        public override string Description { get; } =
+            "Displays mouse dragging functionality for positional interface components.\n\n" +
+            "\"Pressed\" changes upon pressing and releasing the LMB.\n\n" +
+            "\"Drag delta\" displays the last delta from the OnMouseDrag function.\n\n" +
+            "\"Click counter\" increases each time the OnClick function is called. It shouldn't be called if dragging occured.";
 
         public MouseDraggingTestScene()
         {
