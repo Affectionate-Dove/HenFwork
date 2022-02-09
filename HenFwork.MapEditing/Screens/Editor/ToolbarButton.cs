@@ -33,10 +33,12 @@ namespace HenFwork.MapEditing.Screens.Editor
             // TODO
             Action = () => System.Console.WriteLine("H");
 
+            AcceptedActions.Add(EditorControls.Select);
             FillMode = FillMode.Fit;
             RelativeSizeAxes = Axes.Both;
             DisabledColors = new ButtonColorSet(ColorInfo.GRAY, new(255, 255, 255, 150), null);
             HoveredColors = new ButtonColorSet(null, new(255, 255, 255, 255), null);
+            FocusedColors = new ButtonColorSet(null, ColorInfo.ORANGE, null);
             BorderThickness = 3;
             AddChild(spriteContainer = new Container
             {
