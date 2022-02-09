@@ -4,6 +4,7 @@
 
 using HenBstractions.Input;
 using HenFwork.Graphics2d.Layouts;
+using System.Numerics;
 
 namespace HenFwork.Input.UI
 {
@@ -46,6 +47,12 @@ namespace HenFwork.Input.UI
         ///     pressed on this <see cref="IPositionalInterfaceComponent"/>
         /// </summary>
         void OnMouseRelease(MouseButton button);
+
+        /// <summary>
+        ///     Called when a <paramref name="button"/> is pressed down
+        ///     on this <see cref="IPositionalInterfaceComponent"/> and the mouse moves.
+        /// </summary>
+        void OnMouseDrag(MouseButton button, Vector2 delta) { }
 
         /// <summary>
         ///     Called after the <paramref name="button"/>
