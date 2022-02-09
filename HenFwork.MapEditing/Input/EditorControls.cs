@@ -10,5 +10,11 @@ namespace HenFwork.MapEditing.Input
         Previous,
         Select,
         Back,
+        MoveForward,
+        MoveBackward,
+        MoveLeft,
+        MoveRight,
+        MoveUp,
+        MoveDown
     }
 }

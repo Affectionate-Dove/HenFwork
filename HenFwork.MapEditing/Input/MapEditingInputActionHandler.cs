@@ -20,6 +20,12 @@ namespace HenFwork.MapEditing.Input
             [EditorControls.Back] = new List<Keybind> { new(KeyboardKey.KEY_ESCAPE) },
             [EditorControls.Next] = new List<Keybind> { new(KeyboardKey.KEY_TAB) },
             [EditorControls.Previous] = new List<Keybind> { new(KeyboardKey.KEY_LEFT_SHIFT, KeyboardKey.KEY_TAB) },
+            [EditorControls.MoveForward] = new List<Keybind> { new(KeyboardKey.KEY_W) },
+            [EditorControls.MoveBackward] = new List<Keybind> { new(KeyboardKey.KEY_S) },
+            [EditorControls.MoveLeft] = new List<Keybind> { new(KeyboardKey.KEY_A) },
+            [EditorControls.MoveRight] = new List<Keybind> { new(KeyboardKey.KEY_D) },
+            [EditorControls.MoveUp] = new List<Keybind> { new(KeyboardKey.KEY_SPACE) },
+            [EditorControls.MoveDown] = new List<Keybind> { new(KeyboardKey.KEY_LEFT_SHIFT) }
         };
     }
 }
