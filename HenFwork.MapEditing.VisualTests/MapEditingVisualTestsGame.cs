@@ -2,11 +2,9 @@
 // Licensed under the Affectionate Dove Limited Code Viewing License.
 // See the LICENSE file in the repository root for full license text.
 
-using HenBstractions.Input;
 using HenFwork.Input.UI;
 using HenFwork.MapEditing.Input;
 using HenFwork.Testing;
-using System;
 
 namespace HenFwork.MapEditing.VisualTests
 {
@@ -14,17 +12,18 @@ namespace HenFwork.MapEditing.VisualTests
     {
         private readonly MapEditingInputActionHandler inputActionHandler;
         private readonly PositionalInterfaceInputManager positionalInterfaceInputManager;
+        private readonly InterfaceInputManager<EditorControls> interfaceInputManager;
 
         public MapEditingVisualTestsGame()
         {
-            var visualTesterScreen = new MapEditingVisualTester(Inputs);
+            interfaceInputManager = new(ScreenStack, EditorControls.Next);
 
             inputActionHandler = new(Inputs);
-            inputActionHandler.Propagator.Listeners.Add(visualTesterScreen);
+            inputActionHandler.Propagator.Listeners.Add(interfaceInputManager);
 
             positionalInterfaceInputManager = new(Inputs, ScreenStack);
 
-            ScreenStack.Push(visualTesterScreen);
+            ScreenStack.Push(new VisualTester(Inputs));
         }
 
         protected override void OnUpdate()
@@ -32,29 +31,6 @@ namespace HenFwork.MapEditing.VisualTests
             inputActionHandler.Update();
             positionalInterfaceInputManager.Update();
             base.OnUpdate();
-        }
-
-        private class MapEditingVisualTester : VisualTester, IInterfaceComponent<EditorControls>
-        {
-            public event Action<IInterfaceComponent<EditorControls>> FocusRequested
-            { add { } remove { } }
-
-            public bool AcceptsFocus => false;
-
-            public MapEditingVisualTester(Inputs inputs) : base(inputs)
-            {
-            }
-
-            public bool OnActionPressed(EditorControls action) => false;
-
-            public void OnActionReleased(EditorControls action)
-            { }
-
-            public void OnFocus()
-            { }
-
-            public void OnFocusLost()
-            { }
         }
     }
 }
