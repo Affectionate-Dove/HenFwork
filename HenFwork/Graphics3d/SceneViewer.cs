@@ -41,7 +41,7 @@ namespace HenFwork.Graphics3d
             Drawing.EndMode3D();
 
             Drawing.EndTextureMode();
-            Drawing.DrawTexture(renderTexture, LayoutInfo.RenderPosition);
+            Drawing.DrawTexture(renderTexture, LayoutInfo.RenderRect.TopLeft);
 
             base.OnRender();
         }
