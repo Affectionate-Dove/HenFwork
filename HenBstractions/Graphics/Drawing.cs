@@ -30,6 +30,8 @@ namespace HenBstractions.Graphics
 
         public static void DrawCircle(Circle circle, ColorInfo color) => Raylib.DrawCircleV(circle.CenterPosition, circle.Radius, color);
 
+        public static void DrawSphere(Sphere sphere, ColorInfo color) => Raylib.DrawSphere(sphere.CenterPosition, sphere.Radius, color);
+
         public static void DrawRectangle(RectangleF rectangle, ColorInfo color) => Raylib.DrawRectangleV(rectangle.TopLeft, rectangle.Size, color);
 
         public static void DrawRectangleLines(RectangleF rectangle, float thickness, ColorInfo color)
