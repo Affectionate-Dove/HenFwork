@@ -5,6 +5,17 @@
     <TargetFramework>net6.0</TargetFramework>
   </PropertyGroup>
 
+
+	<ItemGroup>
+		<Content Include="Resources/**/*">
+			<Pack>true</Pack>
+			<PackageCopyToOutput>true</PackageCopyToOutput>
+			<PackageFlatten>false</PackageFlatten>
+			<PackagePath>contentFiles\any\any\Resources</PackagePath>
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
   <ItemGroup>
     <ProjectReference Include="..\HenFwork.MapEditing\HenFwork.MapEditing.csproj" />
   </ItemGroup>

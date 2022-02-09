@@ -14,24 +14,24 @@ namespace HenFwork.Testing.Input
         {
         }
 
-        protected override Dictionary<SceneControls, ISet<KeyboardKey>> CreateDefaultKeybindings() => new()
+        protected override Dictionary<SceneControls, IList<Keybind>> CreateDefaultKeybindings() => new()
         {
-            { SceneControls.Back, new HashSet<KeyboardKey> { KeyboardKey.KEY_ESCAPE } },
-            { SceneControls.Select, new HashSet<KeyboardKey> { KeyboardKey.KEY_ENTER } },
-            { SceneControls.Down, new HashSet<KeyboardKey> { KeyboardKey.KEY_S } },
-            { SceneControls.Up, new HashSet<KeyboardKey> { KeyboardKey.KEY_W } },
-            { SceneControls.Left, new HashSet<KeyboardKey> { KeyboardKey.KEY_A } },
-            { SceneControls.Right, new HashSet<KeyboardKey> { KeyboardKey.KEY_D } },
-            { SceneControls.One, new HashSet<KeyboardKey> { KeyboardKey.KEY_ONE } },
-            { SceneControls.Two, new HashSet<KeyboardKey> { KeyboardKey.KEY_TWO } },
-            { SceneControls.Three, new HashSet<KeyboardKey> { KeyboardKey.KEY_THREE } },
-            { SceneControls.Four, new HashSet<KeyboardKey> { KeyboardKey.KEY_FOUR } },
-            { SceneControls.Five, new HashSet<KeyboardKey> { KeyboardKey.KEY_FIVE } },
-            { SceneControls.Six, new HashSet<KeyboardKey> { KeyboardKey.KEY_SIX } },
-            { SceneControls.Seven, new HashSet<KeyboardKey> { KeyboardKey.KEY_SEVEN } },
-            { SceneControls.Eight, new HashSet<KeyboardKey> { KeyboardKey.KEY_EIGHT } },
-            { SceneControls.Nine, new HashSet<KeyboardKey> { KeyboardKey.KEY_NINE } },
-            { SceneControls.Zero, new HashSet<KeyboardKey> { KeyboardKey.KEY_ZERO } },
+            { SceneControls.Back, new List<Keybind> { new(KeyboardKey.KEY_ESCAPE) } },
+            { SceneControls.Select, new List<Keybind> { new(KeyboardKey.KEY_ENTER) } },
+            { SceneControls.Down, new List<Keybind> { new(KeyboardKey.KEY_S) } },
+            { SceneControls.Up, new List<Keybind> { new(KeyboardKey.KEY_W) } },
+            { SceneControls.Left, new List<Keybind> { new(KeyboardKey.KEY_A) } },
+            { SceneControls.Right, new List<Keybind> { new(KeyboardKey.KEY_D) } },
+            { SceneControls.One, new List<Keybind> { new(KeyboardKey.KEY_ONE) } },
+            { SceneControls.Two, new List<Keybind> { new(KeyboardKey.KEY_TWO) } },
+            { SceneControls.Three, new List<Keybind> { new(KeyboardKey.KEY_THREE) } },
+            { SceneControls.Four, new List<Keybind> { new(KeyboardKey.KEY_FOUR) } },
+            { SceneControls.Five, new List<Keybind> { new(KeyboardKey.KEY_FIVE) } },
+            { SceneControls.Six, new List<Keybind> { new(KeyboardKey.KEY_SIX) } },
+            { SceneControls.Seven, new List<Keybind> { new(KeyboardKey.KEY_SEVEN) } },
+            { SceneControls.Eight, new List<Keybind> { new(KeyboardKey.KEY_EIGHT) } },
+            { SceneControls.Nine, new List<Keybind> { new(KeyboardKey.KEY_NINE) } },
+            { SceneControls.Zero, new List<Keybind> { new(KeyboardKey.KEY_ZERO) } },
         };
     }
 }
