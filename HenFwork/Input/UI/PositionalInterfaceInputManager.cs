@@ -96,14 +96,18 @@ namespace HenFwork.Input.UI
                     else if (buttonInfo.JustReleased && buttonInfo.CurrentlyHandledBy == component)
                     {
                         component.OnMouseRelease(buttonInfo.MouseButton);
-                        component.OnClick(buttonInfo.MouseButton);
+                        if (!buttonInfo.WasDragged)
+                            component.OnClick(buttonInfo.MouseButton);
                         buttonInfo.CurrentlyHandledBy = null;
                     }
                     else if (buttonInfo.CurrentlyHandledBy == component && buttonInfo.Pressed && buttonInfo.PressedPreviously)
                     {
                         var mousePositionDelta = Inputs.MousePosition - lastMousePosition.Value;
                         if (mousePositionDelta != Vector2.Zero)
+                        {
+                            buttonInfo.Dragged();
                             component.OnMouseDrag(buttonInfo.MouseButton, mousePositionDelta);
+                        }
                     }
                 }
             }
@@ -133,6 +137,12 @@ namespace HenFwork.Input.UI
         {
             private bool pressed;
 
+            /// <summary>
+            ///     This is set to <see langword="true"/> by the <see cref="Dragged"/> function,
+            ///     and to <see langword="false"/> when <see cref="JustPressed"/> is <see langword="true"/>.
+            /// </summary>
+            public bool WasDragged { get; private set; }
+
             public MouseButton MouseButton { get; }
             public bool PressedPreviously { get; private set; }
 
@@ -143,6 +153,9 @@ namespace HenFwork.Input.UI
                 {
                     PressedPreviously = pressed;
                     pressed = value;
+
+                    if (JustPressed)
+                        WasDragged = false;
                 }
             }
 
@@ -153,6 +166,8 @@ namespace HenFwork.Input.UI
             public IPositionalInterfaceComponent CurrentlyHandledBy { get; set; }
 
             public ButtonInfo(MouseButton mouseButton) => MouseButton = mouseButton;
+
+            public void Dragged() => WasDragged = true;
         }
     }
 }

@@ -25,12 +25,16 @@ namespace HenFwork.VisualTests.Input.UI
         protected override void OnUpdate(float elapsed)
         {
             base.OnUpdate(elapsed);
-            text.Text = $"Dragging: {draggingManager.Dragging}\nDelta: {draggingManager.Delta}";
+            text.Text = $"Pressed: {draggingManager.Dragging}\n" +
+                $"Drag delta: {draggingManager.Delta}\n" +
+                $"Click counter: {draggingManager.ClickCounter}";
         }
 
         private class DraggingManager : Drawable, IPositionalInterfaceComponent
         {
             public bool AcceptsPositionalInput => true;
+
+            public int ClickCounter { get; private set; }
 
             public bool Dragging { get; private set; }
 
@@ -38,8 +42,7 @@ namespace HenFwork.VisualTests.Input.UI
 
             public bool AcceptsPositionalButton(MouseButton button) => button is MouseButton.Left;
 
-            public void OnClick(MouseButton button)
-            { }
+            public void OnClick(MouseButton button) => ClickCounter++;
 
             public void OnHover()
             { }
