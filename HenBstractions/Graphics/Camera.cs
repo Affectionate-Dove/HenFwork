@@ -32,6 +32,8 @@ namespace HenBstractions.Graphics
             }
         }
 
+        public float FovY { get; set; } = 70;
+
         public Vector3? LookingAt
         {
             get => lookingAt;
@@ -50,7 +52,9 @@ namespace HenBstractions.Graphics
             }
         }
 
-        public Raylib_cs.Camera3D RaylibCamera { get; private set; }
+        public CameraProjection Perspective { get; set; }
+
+        internal Raylib_cs.Camera3D RaylibCamera { get; private set; }
 
         public Camera() => Rotation = Vector3.Zero;
 
@@ -61,8 +65,8 @@ namespace HenBstractions.Graphics
                 position = Position,
                 up = new Vector3(0, -1, 0),
                 target = CalculateWhereLookingAt(),
-                fovy = 70,
-                projection = Raylib_cs.CameraProjection.CAMERA_PERSPECTIVE
+                fovy = FovY,
+                projection = (Raylib_cs.CameraProjection)Perspective
             };
         }
 
@@ -75,5 +79,11 @@ namespace HenBstractions.Graphics
             var direction = new Vector3(0, 0, 1).GetRotated(Rotation!.Value);
             return point += direction;
         }
+    }
+
+    public enum CameraProjection
+    {
+        Perspective,
+        Orthographic,
     }
 }
