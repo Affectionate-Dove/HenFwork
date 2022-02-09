@@ -4,17 +4,28 @@
 
 using HenBstractions.Numerics;
 using Raylib_cs;
+using System.Collections.Generic;
 using System.Numerics;
 
 namespace HenBstractions.Graphics
 {
     public static class Drawing
     {
+        private static readonly Stack<Camera> active3dCameras = new();
+
         public static void BeginDrawing() => Raylib.BeginDrawing();
 
-        public static void BeginMode3D(Camera camera) => Raylib.BeginMode3D(camera.RaylibCamera);
+        public static void BeginMode3D(Camera camera)
+        {
+            active3dCameras.Push(camera);
+            Raylib.BeginMode3D(camera.RaylibCamera);
+        }
 
-        public static void EndMode3D() => Raylib.EndMode3D();
+        public static void EndMode3D()
+        {
+            active3dCameras.Pop();
+            Raylib.EndMode3D();
+        }
 
         public static void EndDrawing() => Raylib.EndDrawing();
 
@@ -73,6 +84,11 @@ namespace HenBstractions.Graphics
         public static void DrawTriangle(Triangle2 triangle, ColorInfo color) => Raylib.DrawTriangle(triangle.A, triangle.B, triangle.C, color);
 
         public static void DrawCylinder(Vector3 position, float radiusTop, float radiusBottom, int height, int slices, ColorInfo color) => Raylib.DrawCylinder(position, radiusTop, radiusBottom, height, slices, color);
+
+        /// <param name="source">The rectangle that defines what part of the texture to draw.</param>
+        public static void DrawBillboard(Texture texture, Rectangle source, Vector3 position, float size, Color color) => Raylib.DrawBillboardRec(active3dCameras.Peek().RaylibCamera, texture.Texture2D, source, position, size, color);
+
+        public static void DrawBillboard(Texture texture, Vector3 position, float size, Color color) => Raylib.DrawBillboard(active3dCameras.Peek().RaylibCamera, texture.Texture2D, position, size, color);
 
         private static Rectangle ToRaylibRectangle(RectangleF source) => new(source.Left, source.Top, source.Width, source.Height);
     }
