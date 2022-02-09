@@ -73,7 +73,7 @@ namespace HenFwork.MapEditing.Screens.Editor
                     FillMode = FillMode.Fit,
                     RelativeSizeAxes = Axes.Both,
                     BorderThickness = 3,
-                    EnabledColors = new(color, new(255, 255, 255, 200), null)
+                    EnabledColors = new(color.MultiplyBrightness(0.5f), new(255, 255, 255, 200), null),
                 };
             }
         }
