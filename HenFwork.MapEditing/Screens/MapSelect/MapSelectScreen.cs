@@ -14,7 +14,6 @@ namespace HenFwork.MapEditing.Screens.MapSelect
 {
     public class MapSelectScreen : Screen
     {
-        public static SpriteText confirmMapName;
         private SpriteText mapName;
         private Button<EditorControls> confirmButton;
 
@@ -53,13 +52,6 @@ namespace HenFwork.MapEditing.Screens.MapSelect
                 }
             };
 
-            var confirmTextContainer = new Container()
-            {
-                Anchor = new(0.6f, 0.8f),
-                RelativeSizeAxes = Axes.Both,
-                Size = new(0.4f, 10)
-            };
-
             confirmButton = new Button<EditorControls>()
             {
                 Text = "Confirm",
@@ -82,11 +74,6 @@ namespace HenFwork.MapEditing.Screens.MapSelect
                 FontSize = 20
             });
             AddChild(confirmButton);
-            AddChild(confirmTextContainer);
-            confirmTextContainer.AddChild(confirmMapName = new SpriteText()
-            {
-                FontSize = 10
-            });
         }
 
         private void CreateLeftSide(List<WorldSave> worldSaves, Action<WorldSave> confirmAction)

@@ -5,6 +5,7 @@
 using HenFwork.MapEditing.Saves;
 using HenFwork.MapEditing.Screens.MapSelect;
 using HenFwork.Testing;
+using HenFwork.UI;
 using System.Collections.Generic;
 
 namespace HenFwork.MapEditing.VisualTests.Screens.MapSelect
@@ -13,6 +14,7 @@ namespace HenFwork.MapEditing.VisualTests.Screens.MapSelect
     {
         public MapSelectScreenTestScene()
         {
+            var confirmedMapText = new SpriteText();
             var worldSaves = new List<WorldSave>();
             for (var i = 1; i < 9; i++)
             {
@@ -23,9 +25,11 @@ namespace HenFwork.MapEditing.VisualTests.Screens.MapSelect
             }
             var confirmAction = (WorldSave worldSave) =>
             {
-                MapSelectScreen.confirmMapName.Text = worldSave.Name;
+                confirmedMapText.Text = $"confirmed map {worldSave.Name}";
             };
-            AddChild(new MapSelectScreen(worldSaves, confirmAction));
+            var mapSelectScreen = new MapSelectScreen(worldSaves, confirmAction);
+            AddChild(mapSelectScreen);
+            AddChild(confirmedMapText);
         }
     }
 }
