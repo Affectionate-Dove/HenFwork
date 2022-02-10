@@ -30,15 +30,14 @@ namespace HenFwork.MapEditing.Screens.Editor
 
         public ToolbarButton()
         {
-            // TODO
-            Action = () => System.Console.WriteLine("H");
+            EnabledColors = new ButtonColorSet(null, null, null);
+            HoveredColors = new ButtonColorSet(null, ColorInfo.WHITE, null);
+            FocusedColors = new ButtonColorSet(null, ColorInfo.ORANGE, null);
+            PressedColors = new ButtonColorSet(ColorInfo.BLACK, null, null);
 
             AcceptedActions.Add(EditorControls.Select);
             FillMode = FillMode.Fit;
             RelativeSizeAxes = Axes.Both;
-            DisabledColors = new ButtonColorSet(ColorInfo.GRAY, new(255, 255, 255, 150), null);
-            HoveredColors = new ButtonColorSet(null, new(255, 255, 255, 255), null);
-            FocusedColors = new ButtonColorSet(null, ColorInfo.ORANGE, null);
             BorderThickness = 3;
             AddChild(spriteContainer = new Container
             {
@@ -47,6 +46,19 @@ namespace HenFwork.MapEditing.Screens.Editor
                 Anchor = new(0.5f),
                 Origin = new(0.5f)
             });
+            MakeUnselected();
         }
+
+        public void MakeUnselected() => EnabledColors = EnabledColors with 
+        {
+            fill = ColorInfo.GRAY,
+            border = ColorInfo.GRAY.MultiplyBrightness(1.4f)
+        };
+
+        public void MakeSelected() => EnabledColors = EnabledColors with 
+        {
+            fill = ColorInfo.GRAY.MultiplyBrightness(0.3f),
+            border = ColorInfo.RAYWHITE.MultiplyBrightness(0.95f)
+        };
     }
 }
