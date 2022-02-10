@@ -17,15 +17,21 @@ namespace HenFwork.MapEditing.Screens.Editor
         private const float ACTIONS_TOOLBAR_SIZE = 40;
         private const float TOOLS_TOOLBAR_SIZE = 42;
         private const float toolbars_margins = 100;
+
+        private readonly ToolsManager toolsManager;
         private WorldEditViewer worldViewer;
 
-        public EditorScreen() => CreateLayout();
+        public EditorScreen()
+        {
+            toolsManager = new();
+            CreateLayout();
+        }
 
         private void CreateLayout()
         {
             AddChild(worldViewer = new WorldEditViewer());
 
-            AddChild(new ToolsToolbar
+            AddChild(new ToolsToolbar(toolsManager)
             {
                 RelativeSizeAxes = Axes.Y,
                 Size = new(TOOLS_TOOLBAR_SIZE, 1),
