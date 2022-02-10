@@ -7,6 +7,9 @@ using System;
 
 namespace HenFwork.MapEditing.Screens.Editor
 {
+    /// <summary>
+    ///     Manages the <see cref="Tool"/>s for the <see cref="EditorScreen"/>.
+    /// </summary>
     public class ToolsManager
     {
         private Tool selectedTool;
