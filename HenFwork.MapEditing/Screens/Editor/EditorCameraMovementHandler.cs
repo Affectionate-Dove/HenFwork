@@ -13,10 +13,10 @@ namespace HenFwork.MapEditing.Screens.Editor
 {
     public class EditorCameraMovementHandler : Container, IInterfaceComponent<EditorControls>
     {
-        private const float camera_speed = 1.2f;
-        private readonly Graphics2d.Rectangle focusBorder;
+        private const float camera_speed = 3f;
+        private readonly Rectangle focusBorder;
+        private readonly WorldEditViewer worldEditViewer;
         private Vector3 cameraVelocity;
-        private WorldEditViewer worldEditViewer;
 
         public event Action<IInterfaceComponent<EditorControls>> FocusRequested
         { add { } remove { } }
@@ -26,7 +26,7 @@ namespace HenFwork.MapEditing.Screens.Editor
         public EditorCameraMovementHandler(WorldEditViewer worldEditViewer)
         {
             this.worldEditViewer = worldEditViewer;
-            AddChild(focusBorder = new Graphics2d.Rectangle()
+            AddChild(focusBorder = new Rectangle()
             {
                 BorderThickness = 3,
                 RelativeSizeAxes = Axes.Both,
