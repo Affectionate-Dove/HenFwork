@@ -19,7 +19,6 @@ namespace HenFwork.MapEditing.Screens.Editor
     public class WorldEditViewer : Container
     {
         private readonly SceneViewer sceneViewer;
-        private float yaw;
         private float pitch;
 
         public Vector3 ObservedPoint { get; set; }
@@ -27,10 +26,6 @@ namespace HenFwork.MapEditing.Screens.Editor
         public WorldEditViewer()
         {
             RelativeSizeAxes = Axes.Both;
-
-            // by default, the camera should be at Z = -1,
-            // so (0, 0, 1) rotated by y180
-            yaw = 180;
 
             // look from a bit up
             pitch = 30;
@@ -68,7 +63,6 @@ namespace HenFwork.MapEditing.Screens.Editor
         {
             base.OnUpdate(elapsed);
             sceneViewer.Camera.LookingAt = ObservedPoint;
-            yaw += 0.4f;
 
             pitch = MathF.Min(89.999f, MathF.Max(-89.999f, pitch));
             sceneViewer.Camera.Position = new Vector3(0, 0, -5)/*.GetRotated(new(pitch, yaw, 0))*/;

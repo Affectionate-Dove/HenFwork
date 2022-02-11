@@ -17,7 +17,7 @@ namespace HenFwork.MapEditing.Screens.Editor
         private const float ACTIONS_TOOLBAR_SIZE = 40;
         private const float TOOLS_TOOLBAR_SIZE = 42;
         private const float toolbars_margins = 100;
-        private WorldEditViewer worldEditViewer;
+        private readonly WorldEditViewer worldEditViewer;
 
         public EditorScreen()
         {
