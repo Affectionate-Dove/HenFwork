@@ -19,6 +19,8 @@ namespace HenFwork.MapEditing.Screens.Editor
         private const float toolbars_margins = 100;
         private readonly WorldEditViewer worldEditViewer;
 
+        private readonly ToolsManager toolsManager;
+
         public EditorScreen()
         {
             worldEditViewer = new WorldEditViewer();
@@ -27,12 +29,13 @@ namespace HenFwork.MapEditing.Screens.Editor
             {
                 RelativeSizeAxes = Axes.Both
             });
+            toolsManager = new();
             CreateLayout();
         }
 
         private void CreateLayout()
         {
-            AddChild(new ToolsToolbar
+            AddChild(new ToolsToolbar(toolsManager)
             {
                 RelativeSizeAxes = Axes.Y,
                 Size = new(TOOLS_TOOLBAR_SIZE, 1),
@@ -43,6 +46,15 @@ namespace HenFwork.MapEditing.Screens.Editor
                 RelativeSizeAxes = Axes.X,
                 Size = new(1, ACTIONS_TOOLBAR_SIZE),
                 Padding = new MarginPadding { Horizontal = toolbars_margins }
+            });
+
+            AddChild(new AxesViewer(worldEditViewer.SceneViewer.Camera)
+            {
+                RelativeSizeAxes = Axes.None,
+                Size = new(80),
+                Anchor = new(1, 0),
+                Origin = new(1, 0),
+                Offset = new(-10, 10)
             });
         }
     }

@@ -18,8 +18,8 @@ namespace HenFwork.MapEditing.Screens.Editor
     // TODO: For now just a placeholder displaying an object
     public class WorldEditViewer : Container
     {
-        private readonly SceneViewer sceneViewer;
         private float pitch;
+        public SceneViewer SceneViewer { get; }
 
         public Vector3 ObservedPoint { get; set; }
 
@@ -31,7 +31,7 @@ namespace HenFwork.MapEditing.Screens.Editor
             pitch = 30;
 
             Scene scene;
-            AddChild(sceneViewer = new SceneViewer(scene = new Scene())
+            AddChild(SceneViewer = new SceneViewer(scene = new Scene())
             {
                 RelativeSizeAxes = Axes.Both
             });
@@ -56,17 +56,17 @@ namespace HenFwork.MapEditing.Screens.Editor
 
             scene.Spatials.AddRange(new Spatial[] { cubeX, cubeY, cubeZ, sword });
 
-            sceneViewer.Camera.LookingAt = ObservedPoint;
+            SceneViewer.Camera.LookingAt = ObservedPoint;
         }
 
         protected override void OnUpdate(float elapsed)
         {
             base.OnUpdate(elapsed);
-            sceneViewer.Camera.LookingAt = ObservedPoint;
+            SceneViewer.Camera.LookingAt = ObservedPoint;
 
             pitch = MathF.Min(89.999f, MathF.Max(-89.999f, pitch));
-            sceneViewer.Camera.Position = new Vector3(0, 0, -5)/*.GetRotated(new(pitch, yaw, 0))*/;
-            sceneViewer.Camera.Position += ObservedPoint;
+            SceneViewer.Camera.Position = new Vector3(0, 0, -5)/*.GetRotated(new(pitch, yaw, 0))*/;
+            SceneViewer.Camera.Position += ObservedPoint;
         }
     }
 }
