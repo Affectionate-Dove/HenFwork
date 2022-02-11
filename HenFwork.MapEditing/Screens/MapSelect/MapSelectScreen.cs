@@ -81,8 +81,10 @@ namespace HenFwork.MapEditing.Screens.MapSelect
             var scroll = new ScrollableContainer<EditorControls>()
             {
                 Anchor = new(0, 0.2f),
-                Size = new(0.6f, 1f),
-                RelativeSizeAxes = Axes.Both
+                Size = new(0.6f, 0.7f),
+                RelativeSizeAxes = Axes.Both,
+                ScrollBackAction = EditorControls.Next,
+                ScrollForwardAction = EditorControls.Select,
             };
 
             var flow = new FillFlowContainer()
