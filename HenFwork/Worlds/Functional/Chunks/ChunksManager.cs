@@ -31,6 +31,28 @@ namespace HenFwork.Worlds.Functional.Chunks
             ChunksIndexesBoundingRect = new(0, ChunkCount.X - 1, 0, ChunkCount.Y - 1);
         }
 
+        public ChunksManager(IEnumerable<Chunk> chunks)
+        {
+            var _chunks = new Dictionary<Vector2, Chunk>();
+            float? chunkSize = null;
+            var chunkCount = Vector2.Zero;
+            foreach (var chunk in chunks)
+            {
+                _chunks.Add(chunk.Index, chunk);
+                chunkCount = Vector2.Max(chunk.Index + Vector2.One, chunkCount);
+
+                if (chunkSize is null)
+                    chunkSize = chunk.Coordinates.Width;
+                else if (chunkSize.Value != chunk.Coordinates.Width)
+                    throw new Exception($"The {nameof(ChunkSize)} is not uniform for all chunks.");
+            }
+
+            Chunks = _chunks;
+            ChunkCount = chunkCount;
+            ChunkSize = chunkSize.Value;
+            ChunksIndexesBoundingRect = new(0, ChunkCount.X - 1, 0, ChunkCount.Y - 1);
+        }
+
         /// <remarks>
         /// Will return an index even if
         /// there is no chunk at that index.

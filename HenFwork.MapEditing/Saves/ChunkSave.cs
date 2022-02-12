@@ -3,6 +3,7 @@
 // See the LICENSE file in the repository root for full license text.
 
 using HenFwork.MapEditing.Saves.PropertySerializers;
+using HenFwork.Worlds.Functional.Chunks;
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
@@ -49,5 +50,19 @@ namespace HenFwork.MapEditing.Saves
         }
 
         public string ToDataString() => $"{vector2Serializer.Serialize(new Vector2(Index.x, Index.y))}#{Size}#{string.Join('/', MediumSaves.Select(ms => ms.ToStringData()))}#{string.Join('/', NodeSaves.Select(ns => ns.ToStringData()))}";
+
+        public Chunk ToChunk(NodesSerializer nodesSerializer = null)
+        {
+            var chunk = new Chunk(new(Index.x, Index.y), Size);
+
+            nodesSerializer ??= new NodesSerializer();
+            foreach (var nodeSave in NodeSaves)
+                chunk.AddNode(nodesSerializer.Deserialize(nodeSave));
+
+            foreach (var mediumSave in MediumSaves)
+                chunk.AddMedium(mediumSave.ToMedium());
+
+            return chunk;
+        }
     }
 }

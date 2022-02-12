@@ -34,5 +34,7 @@ namespace HenFwork.MapEditing.Saves
             var serializedTriangle = triangle3Serializer.Serialize(Triangle);
             return ((int)Type).ToString() + separator + serializedTriangle;
         }
+
+        public Medium ToMedium() => new() { Triangle = Triangle, Type = Type };
     }
 }

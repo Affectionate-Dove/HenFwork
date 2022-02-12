@@ -39,6 +39,12 @@ namespace HenFwork.Worlds.Functional
             ChunksSimulationManager = new ChunksSimulationManager(ChunksManager);
         }
 
+        public NodeWorld(IEnumerable<Chunk> chunks)
+        {
+            ChunksManager = new(chunks);
+            ChunksSimulationManager = new(ChunksManager);
+        }
+
         public void AddNode(Node node)
         {
             ChunksManager.AddNode(node);
