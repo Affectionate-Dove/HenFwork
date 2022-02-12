@@ -16,6 +16,12 @@ namespace HenFwork.MapEditing.Saves
         public Triangle3 Triangle { get; }
         public MediumType Type { get; }
 
+        public MediumSave(Medium medium)
+        {
+            Triangle = medium.Triangle;
+            Type = medium.Type;
+        }
+
         public MediumSave(Triangle3 triangle, MediumType type)
         {
             Triangle = triangle;

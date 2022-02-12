@@ -25,6 +25,14 @@ namespace HenFwork.MapEditing.Tests.Saves
         }
 
         [Test]
+        public void ToMediumTest()
+        {
+            var medium = mediumSave.ToMedium();
+            Assert.AreEqual(mediumType, medium.Type);
+            Assert.AreEqual(triangle, medium.Triangle);
+        }
+
+        [Test]
         public void PropertiesInitializationTest() => ValidateProperties(mediumSave);
 
         [Test]
