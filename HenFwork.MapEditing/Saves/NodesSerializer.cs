@@ -7,6 +7,7 @@ using HenFwork.Worlds.Functional.Nodes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Reflection;
 
 namespace HenFwork.MapEditing.Saves
@@ -29,6 +30,8 @@ namespace HenFwork.MapEditing.Saves
         public Dictionary<Type, SaveableMemberSerializer> MembersSerializers { get; } = new()
         {
             [typeof(string)] = new StringSerializer(),
+            [typeof(Vector2)] = new Vector2Serializer(),
+            [typeof(Vector3)] = new Vector3Serializer(),
         };
 
         public Node Deserialize(string assemblyName, string fullTypeName, in IReadOnlyDictionary<string, string> kv)

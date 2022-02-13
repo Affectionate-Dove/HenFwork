@@ -16,6 +16,12 @@ namespace HenFwork.MapEditing.Saves
         public Triangle3 Triangle { get; }
         public MediumType Type { get; }
 
+        public MediumSave(Medium medium)
+        {
+            Triangle = medium.Triangle;
+            Type = medium.Type;
+        }
+
         public MediumSave(Triangle3 triangle, MediumType type)
         {
             Triangle = triangle;
@@ -34,5 +40,7 @@ namespace HenFwork.MapEditing.Saves
             var serializedTriangle = triangle3Serializer.Serialize(Triangle);
             return ((int)Type).ToString() + separator + serializedTriangle;
         }
+
+        public Medium ToMedium() => new() { Triangle = Triangle, Type = Type };
     }
 }
