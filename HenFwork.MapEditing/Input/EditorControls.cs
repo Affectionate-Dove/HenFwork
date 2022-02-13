@@ -10,11 +10,12 @@ namespace HenFwork.MapEditing.Input
         Previous,
         Select,
         Back,
-        MoveForward,
-        MoveBackward,
-        MoveLeft,
-        MoveRight,
-        MoveUp,
-        MoveDown
+        MoveCameraForward,
+        MoveCameraBackward,
+        MoveCameraLeft,
+        MoveCameraRight,
+        MoveCameraUp,
+        MoveCameraDown,
+        MoveCameraWithPositionalInput
     }
 }

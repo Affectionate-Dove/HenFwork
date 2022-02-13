@@ -32,6 +32,8 @@ namespace HenBstractions.Graphics
             }
         }
 
+        public Matrix4x4 Matrix => Raylib_cs.Raylib.GetCameraMatrix(RaylibCamera);
+
         public float FovY { get; set; } = 70;
 
         public Vector3? LookingAt

@@ -20,12 +20,13 @@ namespace HenFwork.MapEditing.Input
             [EditorControls.Back] = new List<Keybind> { new(KeyboardKey.KEY_ESCAPE) },
             [EditorControls.Next] = new List<Keybind> { new(KeyboardKey.KEY_TAB) },
             [EditorControls.Previous] = new List<Keybind> { new(KeyboardKey.KEY_LEFT_SHIFT, KeyboardKey.KEY_TAB) },
-            [EditorControls.MoveForward] = new List<Keybind> { new(KeyboardKey.KEY_W) },
-            [EditorControls.MoveBackward] = new List<Keybind> { new(KeyboardKey.KEY_S) },
-            [EditorControls.MoveLeft] = new List<Keybind> { new(KeyboardKey.KEY_A) },
-            [EditorControls.MoveRight] = new List<Keybind> { new(KeyboardKey.KEY_D) },
-            [EditorControls.MoveUp] = new List<Keybind> { new(KeyboardKey.KEY_SPACE) },
-            [EditorControls.MoveDown] = new List<Keybind> { new(KeyboardKey.KEY_LEFT_SHIFT) }
+            [EditorControls.MoveCameraForward] = new List<Keybind> { new(KeyboardKey.KEY_W) },
+            [EditorControls.MoveCameraBackward] = new List<Keybind> { new(KeyboardKey.KEY_S) },
+            [EditorControls.MoveCameraLeft] = new List<Keybind> { new(KeyboardKey.KEY_A) },
+            [EditorControls.MoveCameraRight] = new List<Keybind> { new(KeyboardKey.KEY_D) },
+            [EditorControls.MoveCameraUp] = new List<Keybind> { new(KeyboardKey.KEY_SPACE) },
+            [EditorControls.MoveCameraDown] = new List<Keybind> { new(KeyboardKey.KEY_LEFT_SHIFT) },
+            [EditorControls.MoveCameraWithPositionalInput] = new List<Keybind> { new(KeyboardKey.KEY_LEFT_SHIFT) }
         };
     }
 }
