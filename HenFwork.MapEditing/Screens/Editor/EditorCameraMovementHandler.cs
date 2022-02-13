@@ -14,7 +14,6 @@ namespace HenFwork.MapEditing.Screens.Editor
 {
     public class EditorCameraMovementHandler : Container, IInterfaceComponent<EditorControls>, IPositionalInterfaceComponent
     {
-        private const float camera_speed = 3f;
         private readonly Rectangle focusBorder;
         private readonly WorldEditViewer worldEditViewer;
         private Vector3 cameraVelocity;
@@ -114,6 +113,7 @@ namespace HenFwork.MapEditing.Screens.Editor
 
         private static Vector3 ActionCameraVelocityChange(EditorControls action)
         {
+            var camera_speed = 5f;
             return action switch
             {
                 EditorControls.MoveCameraForward => new Vector3(0, 0, camera_speed),
