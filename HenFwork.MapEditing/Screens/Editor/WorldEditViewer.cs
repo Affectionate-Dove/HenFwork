@@ -2,6 +2,7 @@
 // Licensed under the Affectionate Dove Limited Code Viewing License.
 // See the LICENSE file in the repository root for full license text.
 
+using HenBstractions.Extensions;
 using HenBstractions.Graphics;
 using HenBstractions.Numerics;
 using HenFwork.Graphics2d;
@@ -18,17 +19,21 @@ namespace HenFwork.MapEditing.Screens.Editor
     // TODO: For now just a placeholder displaying an object
     public class WorldEditViewer : Container
     {
-        private float pitch;
+        private Vector2 cameraOrbitAngle = new(-30, -45);
+
         public SceneViewer SceneViewer { get; }
 
         public Vector3 ObservedPoint { get; set; }
 
+        public Vector2 CameraOrbitAngle
+        {
+            get => cameraOrbitAngle;
+            set => cameraOrbitAngle = value with { X = Math.Clamp(value.X, -89.99f, 89.99f) };
+        }
+
         public WorldEditViewer()
         {
             RelativeSizeAxes = Axes.Both;
-
-            // look from a bit up
-            pitch = 30;
 
             Scene scene;
             AddChild(SceneViewer = new SceneViewer(scene = new Scene())
@@ -51,7 +56,8 @@ namespace HenFwork.MapEditing.Screens.Editor
             var sword = new ModelSpatial
             {
                 Model = Game.ModelStore.Get(model_path),
-                Scale = new Vector3(4)
+                Scale = new Vector3(4),
+                Rotation = new(0, -90, 0)
             };
 
             scene.Spatials.AddRange(new Spatial[] { cubeX, cubeY, cubeZ, sword });
@@ -64,8 +70,7 @@ namespace HenFwork.MapEditing.Screens.Editor
             base.OnUpdate(elapsed);
             SceneViewer.Camera.LookingAt = ObservedPoint;
 
-            pitch = MathF.Min(89.999f, MathF.Max(-89.999f, pitch));
-            SceneViewer.Camera.Position = new Vector3(0, 0, -5)/*.GetRotated(new(pitch, yaw, 0))*/;
+            SceneViewer.Camera.Position = new Vector3(0, 0, -5).GetRotated(new(CameraOrbitAngle, 0));
             SceneViewer.Camera.Position += ObservedPoint;
         }
     }
