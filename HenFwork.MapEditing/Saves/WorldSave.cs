@@ -28,6 +28,7 @@ namespace HenFwork.MapEditing.Saves
         public WorldSave(string data)
         {
             var chunkSaves = new List<ChunkSave>();
+            Name = "Placeholder name";
             ChunkSaves = chunkSaves;
             foreach (var line in data.Split(chunk_separator, System.StringSplitOptions.RemoveEmptyEntries))
                 chunkSaves.Add(new ChunkSave(line));
