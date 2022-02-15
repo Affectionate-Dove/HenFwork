@@ -82,7 +82,7 @@ namespace HenFwork.UI
 
         public bool OnActionPressed(TInputAction action) => action.Equals(ScrollBackAction) || action.Equals(ScrollForwardAction);
 
-        void IPositionalInterfaceComponent.OnMouseScroll(float delta) => Scroll -= delta * 30;
+        public void OnMouseScroll(float delta) => Scroll -= delta * 30;
 
         public void OnActionReleased(TInputAction action)
         {
