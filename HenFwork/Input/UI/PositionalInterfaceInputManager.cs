@@ -84,6 +84,9 @@ namespace HenFwork.Input.UI
                     hoveredComponents.Add(component);
                 }
 
+                if (Inputs.MouseWheelDelta is not 0)
+                    component.OnMouseScroll(Inputs.MouseWheelDelta);
+
                 foreach (var buttonInfo in buttonsInfos)
                 {
                     // the button was just pressed and no descendants handled it,

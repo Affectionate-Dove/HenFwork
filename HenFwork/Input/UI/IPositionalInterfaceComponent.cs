@@ -61,5 +61,7 @@ namespace HenFwork.Input.UI
         ///     without the cursor ever leaving its boundaries.
         /// </summary>
         void OnClick(MouseButton button);
+
+        void OnMouseScroll(float delta) { }
     }
 }
