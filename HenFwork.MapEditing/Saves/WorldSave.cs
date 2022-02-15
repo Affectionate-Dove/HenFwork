@@ -35,7 +35,7 @@ namespace HenFwork.MapEditing.Saves
 
         public string ToDataString() => string.Join(chunk_separator, ChunkSaves.Select(cs => cs.ToDataString()));
 
-        public NodeWorld ToWorld(NodesSerializer nodesSerializer = null)
+        public NodeWorld ToWorld(NodesSerializer? nodesSerializer = null)
         {
             var chunks = ChunkSaves.Select(cs => cs.ToChunk(nodesSerializer));
             return new NodeWorld(chunks);

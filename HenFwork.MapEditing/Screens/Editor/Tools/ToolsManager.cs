@@ -12,11 +12,11 @@ namespace HenFwork.MapEditing.Screens.Editor
     /// </summary>
     public class ToolsManager
     {
-        private Tool selectedTool;
+        private Tool? selectedTool;
 
-        public event Action<Tool> SelectedToolChanged;
+        public event Action<Tool?> SelectedToolChanged = delegate { };
 
-        public Tool SelectedTool
+        public Tool? SelectedTool
         {
             get => selectedTool;
             set
