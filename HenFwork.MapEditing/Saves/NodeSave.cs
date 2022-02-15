@@ -20,14 +20,14 @@ namespace HenFwork.MapEditing.Saves
         /// <summary>
         ///     Names of <see cref="Node"/>'s members and respective values.
         /// </summary>
-        public Dictionary<string, string> MembersValues { get; }
+        public IReadOnlyDictionary<string, string> MembersValues { get; }
 
         public NodeSave(string assemblyName, string typeName, IEnumerable<KeyValuePair<string, string>> membersValues)
         {
             AssemblyName = assemblyName;
             TypeName = typeName;
             FullTypeName = $"{AssemblyName}.{TypeName}";
-            MembersValues = new(membersValues);
+            MembersValues = new Dictionary<string, string>(membersValues);
         }
 
         public NodeSave(string data)

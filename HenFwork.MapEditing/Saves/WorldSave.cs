@@ -15,9 +15,15 @@ namespace HenFwork.MapEditing.Saves
     {
         private const char chunk_separator = '\n';
 
+        public string Name { get; }
+
         public IReadOnlyList<ChunkSave> ChunkSaves { get; }
 
-        public WorldSave(IReadOnlyList<ChunkSave> chunkSaves) => ChunkSaves = chunkSaves;
+        public WorldSave(string name, IEnumerable<ChunkSave> chunkSaves)
+        {
+            Name = name;
+            ChunkSaves = new List<ChunkSave>(chunkSaves);
+        }
 
         public WorldSave(string data)
         {
