@@ -9,7 +9,7 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Raylib-cs" Version="4.0.0-alpha.1">
+		<PackageReference Include="Raylib-cs" Version="4.0.0">
 			<!--Makes the Raylib-cs assembly invisibile to dependents-->
 			<PrivateAssets>compile</PrivateAssets>
 		</PackageReference>
