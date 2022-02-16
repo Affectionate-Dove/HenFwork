@@ -18,9 +18,9 @@ namespace HenFwork.MapEditing.Saves.Editable
     {
         private readonly List<EditableChunkSave> chunkSaves = new();
 
-        public event Action<EditableChunkSave> ChunkAdded;
+        public event Action<EditableChunkSave> ChunkAdded = delegate { };
 
-        public event Action<EditableChunkSave> ChunkRemoved;
+        public event Action<EditableChunkSave> ChunkRemoved = delegate { };
 
         public string Name { get; set; }
         public int Count => ((ICollection<EditableChunkSave>)chunkSaves).Count;

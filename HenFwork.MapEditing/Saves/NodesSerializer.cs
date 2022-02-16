@@ -36,8 +36,8 @@ namespace HenFwork.MapEditing.Saves
 
         public Node Deserialize(string assemblyName, string fullTypeName, in IReadOnlyDictionary<string, string> kv)
         {
-            var node = Activator.CreateInstance(assemblyName, fullTypeName).Unwrap() as Node;
-            var nodeType = node.GetType();
+            var node = Activator.CreateInstance(assemblyName, fullTypeName)?.Unwrap() as Node;
+            var nodeType = node!.GetType();
 
             foreach (var (key, value) in kv)
                 SetMemberValue(node, nodeType, key, value);
@@ -51,7 +51,12 @@ namespace HenFwork.MapEditing.Saves
         {
             var nodeType = node.GetType();
             var assemblyName = nodeType.Assembly.GetName().Name;
-            var typeName = nodeType.FullName.Replace(assemblyName, null).TrimStart('.');
+            var typeName = nodeType.FullName;
+            if (typeName is null)
+                throw new Exception($"Couldn't get the type name of the node.");
+            if (assemblyName is null)
+                throw new NullReferenceException($"{nameof(assemblyName)} was null.");
+            typeName = typeName.Replace(assemblyName, null).TrimStart('.');
 
             var keyValues = new Dictionary<string, string>();
 
@@ -100,6 +105,8 @@ namespace HenFwork.MapEditing.Saves
         private void SetFieldValue(Node node, Type nodeType, string memberName, string memberValue, BindingFlags bindingAttr)
         {
             var field = nodeType.GetField(memberName, bindingAttr);
+            if (field is null)
+                throw new Exception($"Couldn't find field \"{memberName}\" in type \"{nodeType}\".");
             var fieldType = field.FieldType;
             var memberSerializer = GetMemberSerializer(fieldType);
             var deserializedValue = memberSerializer.Deserialize(memberValue);
@@ -109,6 +116,8 @@ namespace HenFwork.MapEditing.Saves
         private void SetPropertyValue(Node node, Type nodeType, string memberName, string memberValue, BindingFlags bindingAttr)
         {
             var property = nodeType.GetProperty(memberName, bindingAttr);
+            if (property is null)
+                throw new Exception($"Couldn't find field \"{memberName}\" in type \"{nodeType}\".");
             var propertyType = property.PropertyType;
             var memberSerializer = GetMemberSerializer(propertyType);
             var deserializedValue = memberSerializer.Deserialize(memberValue);

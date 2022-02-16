@@ -51,7 +51,7 @@ namespace HenFwork.MapEditing.Saves
 
         public string ToDataString() => $"{vector2Serializer.Serialize(new Vector2(Index.x, Index.y))}#{Size}#{string.Join('/', MediumSaves.Select(ms => ms.ToStringData()))}#{string.Join('/', NodeSaves.Select(ns => ns.ToStringData()))}";
 
-        public Chunk ToChunk(NodesSerializer nodesSerializer = null)
+        public Chunk ToChunk(NodesSerializer? nodesSerializer = null)
         {
             var chunk = new Chunk(new(Index.x, Index.y), Size);
 

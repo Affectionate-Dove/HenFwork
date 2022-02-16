@@ -12,9 +12,9 @@ namespace HenFwork.MapEditing.Screens.Editor
     public class ToolbarButton : Button<EditorControls>
     {
         private readonly Container spriteContainer;
-        private Sprite sprite;
+        private Sprite? sprite;
 
-        public Sprite Sprite
+        public Sprite? Sprite
         {
             get => sprite;
             set
@@ -49,13 +49,13 @@ namespace HenFwork.MapEditing.Screens.Editor
             MakeUnselected();
         }
 
-        public void MakeUnselected() => EnabledColors = EnabledColors with 
+        public void MakeUnselected() => EnabledColors = EnabledColors with
         {
             fill = ColorInfo.GRAY,
             border = ColorInfo.GRAY.MultiplyBrightness(1.4f)
         };
 
-        public void MakeSelected() => EnabledColors = EnabledColors with 
+        public void MakeSelected() => EnabledColors = EnabledColors with
         {
             fill = ColorInfo.GRAY.MultiplyBrightness(0.3f),
             border = ColorInfo.RAYWHITE.MultiplyBrightness(0.95f)

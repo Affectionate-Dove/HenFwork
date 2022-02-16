@@ -28,6 +28,7 @@ namespace HenFwork.MapEditing.Saves
         public WorldSave(string data)
         {
             var chunkSaves = new List<ChunkSave>();
+            Name = "Placeholder name";
             ChunkSaves = chunkSaves;
             foreach (var line in data.Split(chunk_separator, System.StringSplitOptions.RemoveEmptyEntries))
                 chunkSaves.Add(new ChunkSave(line));
@@ -35,7 +36,7 @@ namespace HenFwork.MapEditing.Saves
 
         public string ToDataString() => string.Join(chunk_separator, ChunkSaves.Select(cs => cs.ToDataString()));
 
-        public NodeWorld ToWorld(NodesSerializer nodesSerializer = null)
+        public NodeWorld ToWorld(NodesSerializer? nodesSerializer = null)
         {
             var chunks = ChunkSaves.Select(cs => cs.ToChunk(nodesSerializer));
             return new NodeWorld(chunks);

@@ -60,12 +60,12 @@ namespace HenFwork.MapEditing.Screens.Editor
             toolsManager.SelectedToolChanged += OnSelectionToolChanged;
         }
 
-        private void OnSelectionToolChanged(Tool tool)
+        private void OnSelectionToolChanged(Tool? tool)
         {
             toolbarButtons.ForEach(b =>
             {
                 b.MakeUnselected();
-                if (b.Tool == tool)
+                if (tool is not null && b.Tool == tool)
                     b.MakeSelected();
             });
         }

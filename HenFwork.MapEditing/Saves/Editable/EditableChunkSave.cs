@@ -19,13 +19,13 @@ namespace HenFwork.MapEditing.Saves.Editable
         private readonly List<NodeSave> nodeSaves = new();
         private readonly List<MediumSave> mediumSaves = new();
 
-        public event Action<NodeSave> NodeAdded;
+        public event Action<NodeSave> NodeAdded = delegate { };
 
-        public event Action<NodeSave> NodeRemoved;
+        public event Action<NodeSave> NodeRemoved = delegate { };
 
-        public event Action<MediumSave> MediumAdded;
+        public event Action<MediumSave> MediumAdded = delegate { };
 
-        public event Action<MediumSave> MediumRemoved;
+        public event Action<MediumSave> MediumRemoved = delegate { };
 
         public bool IsReadOnly => false;
 
