@@ -3,6 +3,7 @@
 // See the LICENSE file in the repository root for full license text.
 
 using HenFwork.MapEditing.Saves.PropertySerializers;
+using HenFwork.Worlds;
 using HenFwork.Worlds.Functional.Nodes;
 using System;
 using System.Collections.Generic;
@@ -30,6 +31,10 @@ namespace HenFwork.MapEditing.Saves
         public Dictionary<Type, SaveableMemberSerializer> MembersSerializers { get; } = new()
         {
             [typeof(string)] = new StringSerializer(),
+            [typeof(double)] = new DoubleSerializer(),
+            [typeof(float)] = new FloatSerializer(),
+            [typeof(int)] = new IntSerializer(),
+            [typeof(bool)] = new BooleanSerializer(),
             [typeof(Vector2)] = new Vector2Serializer(),
             [typeof(Vector3)] = new Vector3Serializer(),
         };
@@ -116,11 +121,19 @@ namespace HenFwork.MapEditing.Saves
         private void SetPropertyValue(Node node, Type nodeType, string memberName, string memberValue, BindingFlags bindingAttr)
         {
             var property = nodeType.GetProperty(memberName, bindingAttr);
+
+            // without this, you can't get a private (or non-public?) setter
+            property = property?.DeclaringType!.GetProperty(memberName);
+
             if (property is null)
                 throw new Exception($"Couldn't find field \"{memberName}\" in type \"{nodeType}\".");
             var propertyType = property.PropertyType;
             var memberSerializer = GetMemberSerializer(propertyType);
             var deserializedValue = memberSerializer.Deserialize(memberValue);
+
+            if (property.SetMethod is null)
+                throw new NullReferenceException($"The property {nodeType.Name}.{memberName} doesn't have a setter.");
+
             property.SetValue(node, deserializedValue);
         }
 

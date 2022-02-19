@@ -8,10 +8,13 @@ namespace HenFwork.Worlds
 {
     public abstract class WorldObject
     {
+        [Saveable]
         public int Id { get; set; }
 
+        [Saveable]
         public string Name { get; set; }
 
+        [Saveable]
         public Vector3 Position { get; set; }
     }
 }

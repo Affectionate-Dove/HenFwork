@@ -4,6 +4,7 @@
 
 using HenFwork.MapEditing.Saves;
 using HenFwork.MapEditing.Saves.PropertySerializers;
+using HenFwork.Worlds;
 using HenFwork.Worlds.Functional.Nodes;
 using NUnit.Framework;
 using System.Collections.Generic;
@@ -19,19 +20,6 @@ namespace HenFwork.MapEditing.Tests.Saves
 
         [SetUp]
         public void SetUp() => nodesSerializer = new NodesSerializer();
-
-        [Test]
-        public void DeserializeTest()
-        {
-            var nodeSave = new NodeSave(data_string);
-            var node = nodesSerializer.Deserialize(nodeSave.AssemblyName, nodeSave.FullTypeName, nodeSave.MembersValues) as TestNodeForSaving;
-
-            Assert.NotNull(node);
-            Assert.AreEqual(typeof(TestNodeForSaving), node.GetType());
-
-            Assert.AreEqual("da", node.TestStringProperty);
-            Assert.AreEqual("hy", node.TestStringField);
-        }
 
         [Test(Description = "When deserializing and a member mentioned in the data string doesn't exist in a class, an appropriate exception should be thrown.")]
         public void DeserializeNonExistingMemberTest()
@@ -56,12 +44,18 @@ namespace HenFwork.MapEditing.Tests.Saves
         }
 
         [Test]
-        public void SerializeTest()
+        public void SerializeDeserializeTest()
         {
             var node = new TestNodeForSaving { TestStringField = "hy", TestStringProperty = "da" };
             var nodeSave = nodesSerializer.Serialize(node);
 
-            Assert.AreEqual(data_string, nodeSave.ToStringData());
+            var node2 = nodesSerializer.Deserialize(nodeSave.AssemblyName, nodeSave.FullTypeName, nodeSave.MembersValues) as TestNodeForSaving;
+
+            Assert.NotNull(node2);
+            Assert.AreEqual(typeof(TestNodeForSaving), node2.GetType());
+
+            Assert.AreEqual("da", node2.TestStringProperty);
+            Assert.AreEqual("hy", node2.TestStringField);
         }
 
         private class NodeWithMemberWithNoSerializer : Node

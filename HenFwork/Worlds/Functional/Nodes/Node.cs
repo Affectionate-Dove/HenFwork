@@ -19,12 +19,14 @@ namespace HenFwork.Worlds.Functional.Nodes
         /// </summary>
         public event Action<Node> NodeEjected;
 
+        [Saveable]
         public CollisionBody CollisionBody { get; set; }
 
         /// <summary>
         ///     The time at the beginning of
         ///     the latest started simulation.
         /// </summary>
+        [Saveable]
         public double SynchronizedTime { get; private set; }
 
         public virtual Action Interaction { get; }
@@ -35,6 +37,7 @@ namespace HenFwork.Worlds.Functional.Nodes
         ///     This means that after the next simulation step of a chunk,
         ///     it will be removed from it.
         /// </summary>
+        [Saveable]
         public bool Disappearing { get; private set; }
 
         public virtual void OnCollision(Node other)
