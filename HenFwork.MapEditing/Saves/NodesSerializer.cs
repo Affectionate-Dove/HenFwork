@@ -121,7 +121,10 @@ namespace HenFwork.MapEditing.Saves
         private void SetPropertyValue(Node node, Type nodeType, string memberName, string memberValue, BindingFlags bindingAttr)
         {
             var property = nodeType.GetProperty(memberName, bindingAttr);
+
+            // without this, you can't get a private (or non-public?) setter
             property = property?.DeclaringType!.GetProperty(memberName);
+
             if (property is null)
                 throw new Exception($"Couldn't find field \"{memberName}\" in type \"{nodeType}\".");
             var propertyType = property.PropertyType;
