@@ -3,6 +3,7 @@
 // See the LICENSE file in the repository root for full license text.
 
 using HenFwork.Graphics2d;
+using HenFwork.MapEditing.Saves.Editable;
 using HenFwork.Screens;
 
 namespace HenFwork.MapEditing.Screens.Editor
@@ -21,9 +22,9 @@ namespace HenFwork.MapEditing.Screens.Editor
 
         private readonly ToolsManager toolsManager;
 
-        public EditorScreen()
+        public EditorScreen(EditableWorldSave editableWorldSave)
         {
-            worldEditViewer = new WorldEditViewer();
+            worldEditViewer = new WorldEditViewer(editableWorldSave);
             AddChild(worldEditViewer);
             AddChild(new EditorCameraMovementHandler(worldEditViewer)
             {
