@@ -54,7 +54,11 @@ namespace HenBstractions.Graphics
             DrawLine(new(rectangle.Left + ht, rectangle.Bottom), new(rectangle.Left + ht, rectangle.Top + thickness), thickness, color);
         }
 
-        public static void DrawTriangle3D(Triangle3 triangle, ColorInfo color) => Raylib.DrawTriangle3D(triangle.A, triangle.B, triangle.C, color);
+        public static void DrawTriangle3D(Triangle3 triangle, ColorInfo color)
+        {
+            Raylib.DrawTriangle3D(triangle.A, triangle.B, triangle.C, color);
+            Raylib.DrawTriangle3D(triangle.C, triangle.B, triangle.A, color);
+        }
 
         public static void DrawCube(Vector3 position, Vector3 size, ColorInfo color) => Raylib.DrawCubeV(position, size, color);
 
