@@ -2,7 +2,7 @@
 // Licensed under the Affectionate Dove Limited Code Viewing License.
 // See the LICENSE file in the repository root for full license text.
 
-using HenFwork.MapEditing.Saves;
+using HenFwork.Worlds;
 using HenFwork.Worlds.Functional.Nodes;
 
 namespace HenFwork.MapEditing.Tests.Saves

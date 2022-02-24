@@ -61,5 +61,10 @@ namespace HenFwork.Input.UI
         ///     without the cursor ever leaving its boundaries.
         /// </summary>
         void OnClick(MouseButton button);
+
+        /// <param name="delta">
+        ///     Positive value is an upwards scroll.
+        /// </param>
+        void OnMouseScroll(float delta) { }
     }
 }

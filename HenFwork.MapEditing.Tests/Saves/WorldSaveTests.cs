@@ -47,14 +47,14 @@ namespace HenFwork.MapEditing.Tests.Saves
         [TestCaseSource(nameof(Cases))]
         public void FromPropertiesTest(ChunkSave[] chunkSaves)
         {
-            var worldSave = new WorldSave(chunkSaves);
+            var worldSave = new WorldSave(null, chunkSaves);
             ValidateProperties(worldSave, chunkSaves);
         }
 
         [TestCaseSource(nameof(Cases))]
         public void FromDataStringTest(ChunkSave[] chunkSaves)
         {
-            var dataString = new WorldSave(chunkSaves).ToDataString();
+            var dataString = new WorldSave(null, chunkSaves).ToDataString();
             var worldSave = new WorldSave(dataString);
             ValidateProperties(worldSave, chunkSaves);
         }

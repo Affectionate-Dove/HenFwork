@@ -3,13 +3,14 @@
 // See the LICENSE file in the repository root for full license text.
 
 using HenBstractions.Graphics;
+using HenBstractions.Input;
 using HenFwork.Graphics2d;
 using HenFwork.Input.UI;
 using System;
 
 namespace HenFwork.UI
 {
-    public class ScrollableContainer<TInputAction> : Container, IInterfaceComponent<TInputAction>
+    public class ScrollableContainer<TInputAction> : Container, IInterfaceComponent<TInputAction>, IPositionalInterfaceComponent
     {
         private Direction direction;
         private float scroll;
@@ -54,6 +55,7 @@ namespace HenFwork.UI
 
         public ScrollBarContainer ScrollBar { get; }
 
+        public bool AcceptsPositionalInput => true;
         protected Container ContentContainer { get; }
 
         public ScrollableContainer()
@@ -80,6 +82,8 @@ namespace HenFwork.UI
 
         public bool OnActionPressed(TInputAction action) => action.Equals(ScrollBackAction) || action.Equals(ScrollForwardAction);
 
+        public void OnMouseScroll(float delta) => Scroll -= delta * 30;
+
         public void OnActionReleased(TInputAction action)
         {
             if (action.Equals(ScrollForwardAction))
@@ -87,6 +91,23 @@ namespace HenFwork.UI
             else if (action.Equals(ScrollBackAction))
                 Scroll -= ScrollOnActionAmount;
         }
+
+        public bool AcceptsPositionalButton(MouseButton button) => false;
+
+        public void OnHover()
+        { }
+
+        public void OnHoverLost()
+        { }
+
+        public void OnMousePress(MouseButton button)
+        { }
+
+        public void OnMouseRelease(MouseButton button)
+        { }
+
+        public void OnClick(MouseButton button)
+        { }
 
         protected override void OnLayoutUpdate()
         {

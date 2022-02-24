@@ -4,7 +4,7 @@
 
 using System;
 
-namespace HenFwork.MapEditing.Saves
+namespace HenFwork.Worlds
 {
     /// <summary>
     ///     Declares that a field or property can

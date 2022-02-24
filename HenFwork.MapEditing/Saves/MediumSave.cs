@@ -13,8 +13,8 @@ namespace HenFwork.MapEditing.Saves
         private const char separator = '|';
         private static readonly Triangle3Serializer triangle3Serializer = new();
 
-        public Triangle3 Triangle { get; }
-        public MediumType Type { get; }
+        public Triangle3 Triangle { get; init; }
+        public MediumType Type { get; init; }
 
         public MediumSave(Medium medium)
         {
