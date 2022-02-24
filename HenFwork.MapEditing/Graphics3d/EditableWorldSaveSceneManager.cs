@@ -17,6 +17,16 @@ using System.Numerics;
 
 namespace HenFwork.MapEditing.Graphics3d
 {
+    /// <summary>
+    ///     Provides and manages a <see cref="HenFwork.Graphics3d.Scene"/>
+    ///     for a given <see cref="Saves.Editable.EditableWorldSave"/>.
+    /// </summary>
+    /// <remarks>
+    ///     Automatically creates (and removes) <see cref="Spatial"/>s
+    ///     for <see cref="NodeSave"/>s and <see cref="MediumSave"/>s
+    ///     in the <see cref="EditableWorldSave"/> using functions assigned to
+    ///     <see cref="NodeSpatialCreator"/> and <see cref="MediumSpatialCreator"/>.
+    /// </remarks>
     public class EditableWorldSaveSceneManager
     {
         private static readonly Vector3Serializer vector3Serializer = new();
