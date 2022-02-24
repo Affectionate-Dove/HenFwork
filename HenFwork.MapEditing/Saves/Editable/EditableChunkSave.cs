@@ -33,6 +33,9 @@ namespace HenFwork.MapEditing.Saves.Editable
 
         public float Size { get; }
         public (int x, int y) Index { get; }
+        public IEnumerable<NodeSave> Nodes => nodeSaves;
+
+        public IEnumerable<MediumSave> Mediums => mediumSaves;
 
         public EditableChunkSave(IEnumerable<NodeSave> nodeSaves, IEnumerable<MediumSave> mediumSaves, float size, (int x, int y) index)
         {
@@ -89,8 +92,13 @@ namespace HenFwork.MapEditing.Saves.Editable
             return false;
         }
 
+        /// <remarks>
+        ///     The <paramref name="mediumSave"/> won't be added if it already exists.
+        /// </remarks>
         public void Add(MediumSave mediumSave)
         {
+            if (mediumSaves.Contains(mediumSave))
+                return;
             ((ICollection<MediumSave>)mediumSaves).Add(mediumSave);
             MediumAdded?.Invoke(mediumSave);
         }
