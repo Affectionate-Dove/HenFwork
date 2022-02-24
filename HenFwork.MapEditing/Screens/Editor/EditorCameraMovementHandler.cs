@@ -17,8 +17,8 @@ namespace HenFwork.MapEditing.Screens.Editor
         private readonly Rectangle focusBorder;
         private readonly WorldEditViewer worldEditViewer;
         private Vector3 cameraVelocity;
-        private bool consideringPositionalInput;
-        private bool draggingAllowed;
+        private DraggingMode nextDraggingMode = DraggingMode.Orbit;
+        private DraggingMode? currentDraggingMode;
 
         public event Action<IInterfaceComponent<EditorControls>> FocusRequested
         { add { } remove { } }
@@ -42,7 +42,7 @@ namespace HenFwork.MapEditing.Screens.Editor
         {
             if (action is EditorControls.MoveCameraWithPositionalInput)
             {
-                consideringPositionalInput = true;
+                nextDraggingMode = DraggingMode.Move;
                 return true;
             }
 
@@ -59,7 +59,7 @@ namespace HenFwork.MapEditing.Screens.Editor
         {
             if (action is EditorControls.MoveCameraWithPositionalInput)
             {
-                consideringPositionalInput = false;
+                nextDraggingMode = DraggingMode.Orbit;
                 return;
             }
 
@@ -80,13 +80,9 @@ namespace HenFwork.MapEditing.Screens.Editor
         {
         }
 
-        void IPositionalInterfaceComponent.OnMousePress(MouseButton button)
-        {
-            if (consideringPositionalInput)
-                draggingAllowed = true;
-        }
+        void IPositionalInterfaceComponent.OnMousePress(MouseButton button) => currentDraggingMode = nextDraggingMode;
 
-        void IPositionalInterfaceComponent.OnMouseRelease(MouseButton button) => draggingAllowed = false;
+        void IPositionalInterfaceComponent.OnMouseRelease(MouseButton button) => currentDraggingMode = null;
 
         void IPositionalInterfaceComponent.OnClick(MouseButton button)
         {
@@ -94,15 +90,19 @@ namespace HenFwork.MapEditing.Screens.Editor
 
         void IPositionalInterfaceComponent.OnMouseDrag(MouseButton button, Vector2 delta)
         {
-            if (!draggingAllowed)
-                return;
-
-            // also this maybe should be dependent on time
-
-            var speed = 0.01f;
-            var mouseDelta3 = new Vector3(delta.X, delta.Y, 0);
-            var moveDelta = Vector3.Transform(mouseDelta3, worldEditViewer.SceneViewer.Camera.Matrix) * speed;
-            worldEditViewer.ObservedPoint -= moveDelta;
+            // this maybe should be dependent on time
+            if (currentDraggingMode is DraggingMode.Orbit)
+            {
+                var speed = 0.4f;
+                worldEditViewer.CameraOrbitAngle += new Vector2(-delta.Y, delta.X) * speed;
+            }
+            else if (currentDraggingMode is DraggingMode.Move)
+            {
+                var speed = 0.01f;
+                var mouseDelta3 = new Vector3(delta.X, delta.Y, 0);
+                var moveDelta = Vector3.Transform(mouseDelta3, worldEditViewer.SceneViewer.Camera.Matrix) * speed;
+                worldEditViewer.ObservedPoint -= moveDelta;
+            }
         }
 
         protected override void OnUpdate(float elapsed)
@@ -124,6 +124,12 @@ namespace HenFwork.MapEditing.Screens.Editor
                 EditorControls.MoveCameraDown => new Vector3(0, -camera_speed, 0),
                 _ => Vector3.Zero
             };
+        }
+
+        private enum DraggingMode
+        {
+            Orbit,
+            Move
         }
     }
 }
